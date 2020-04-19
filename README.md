@@ -1,26 +1,30 @@
 # Aprender React JS
-<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
-- [Aprender React JS](#aprender-react-js)
-	- [1. Introducción del curso](#1-introducción-del-curso)
-	- [2. Configuracion del entorno](#2-configuracion-del-entorno)
-		- [Linter](#linter)
-	- [3. Conceptos basicos](#3-conceptos-basicos)
-		- [JSX](#jsx)
-	- [4. Renderizado condicional y listas](#4-renderizado-condicional-y-listas)
-	- [5. React Developer Tools](#5-react-developer-tools)
-	- [6. Eventos y Formularios](#6-eventos-y-formularios)
-	- [7. Children y PropTypes](#7-children-y-proptypes)
-	- [8. Ciclo de Vida de los Componentes](#8-ciclo-de-vida-de-los-componentes)
-	- [9. Buenas Practicas](#9-buenas-practicas)
-	- [10. PROYECTO - Buscador de peliculas online](#10-proyecto---buscador-de-peliculas-online)
-	- [11. Redux, gestionando el estado global de tu aplicación](#11-redux-gestionando-el-estado-global-de-tu-aplicación)
-	- [12. Proyectos de los estudiantes](#12-proyectos-de-los-estudiantes)
-<!-- TOC END -->
 
-## 1. Introducción del curso
+<!-- TOC depthfrom:2 orderedlist:false -->
+
+- [Introducción del curso](#introducci%C3%B3n-del-curso)
+- [Configuracion del entorno](#configuracion-del-entorno)
+    - [Linter](#linter)
+- [Conceptos basicos](#conceptos-basicos)
+    - [Introducción sobre los conceptos básicos de React](#introducci%C3%B3n-sobre-los-conceptos-b%C3%A1sicos-de-react)
+    - [Introdución a JSX](#introduci%C3%B3n-a-jsx)
+        - [Ejemplo 01](#ejemplo-01)
+        - [Ejemplo 02: expresion](#ejemplo-02-expresion)
+        - [Ejemplo 03: funciones](#ejemplo-03-funciones)
+        - [Ejemplo 04: atributos](#ejemplo-04-atributos)
+        - [Ejemplo 05: two elements](#ejemplo-05-two-elements)
+    - [Componentes en ReactJS](#componentes-en-reactjs)
+        - [Componente como Function](#componente-como-function)
+        - [Componente como Arrow Function](#componente-como-arrow-function)
+        - [Componente como clase que hereda de Component](#componente-como-clase-que-hereda-de-component)
+    - [Entendiendo las props](#entendiendo-las-props)
+
+<!-- /TOC -->
+
+## Introducción del curso
 https://www.udemy.com/course/aprendiendo-react/
 
-## 2. Configuracion del entorno
+## Configuracion del entorno
 * Install
   * NodeJS
   * Visual Studio Code
@@ -59,6 +63,7 @@ function App() {
 }
 export default App;
 ```
+
 ### Linter
 * Instalar plugin eslint
 * Crear el fichero **.eslintrc**
@@ -68,7 +73,9 @@ export default App;
 }
 ```
 
-## 3. Conceptos basicos
+## Conceptos basicos
+
+### Introducción sobre los conceptos básicos de React
 * Declarativo: indicamos qué y como.
 * Basado en componentes:
   * Partes mas pequeñas de la interfaz.
@@ -81,12 +88,13 @@ export default App;
   * Compatibilidad cross browsing sin necesidad de más librerías.
   * Soporte para todos los eventos 1ue puedas necesitar desde click y double click, hasta eventos móviles como touchstaert y touchend.
 * Server Side Rendering: el mismo codigo que se renderiza en el cliente lo tenemos en el servidor.
-### JSX
+
+### Introdución a JSX
 Es una sintaxis para generar componentes en React
 https://babeljs.io/repl
 ![compiler](docs/babel.png)  
 
-* Ejemplo 01
+#### Ejemplo 01
 ```jsx
 const element = <h1>Hello, world</h1>
 ```
@@ -95,7 +103,7 @@ Se convierte en:
 var element = React.createElement("h1", null, "Hello, world");
 ```
 
-* Ejemplo 02: expresion
+#### Ejemplo 02: expresion
 ```jsx
 const element = <h1>{2 + 2}</h1>
 ```
@@ -104,7 +112,7 @@ Se convierte en:
 var element = React.createElement("h1", null, 2 + 2);
 ```
 
-* Ejemplo 03: funciones
+#### Ejemplo 03: funciones
 ```jsx
 function multiplicar(a,b) { return a * b }
 const mostrar = true
@@ -118,7 +126,8 @@ function multiplicar(a, b) {
 var mostrar = true;
 var element = React.createElement("h1", null, mostrar ? multiplicar(2, 3) : "nada que mostrar");
 ```
-* Ejemplo 04: atributos
+
+#### Ejemplo 04: atributos
 ```jsx
 const image = <img src="http://aaa/image.jpg"/>
 ```
@@ -126,7 +135,8 @@ Se convierte en:
 ```js
 var image = React.createElement("img", { src: "http://aaa/image.jpg" });
 ```
-* Ejemplo 05: two elements
+
+#### Ejemplo 05: two elements
 ```jsx
 const element = <div><h1>Hola mundo</h1><h2>subtitulo</h2></div>
 ```
@@ -137,22 +147,116 @@ var element = React.createElement("div", null,
   React.createElement("h2", null, "subtitulo"));
 ```
 
+### Componentes en ReactJS
+
+#### Componente como Function
+```js
+function Hello(props) {
+  return <h2>{props.title}</h2>
+}
+```
+
+#### Componente como Arrow Function
+```js
+const HelloArrow = (props) => <h2>{props.title}</h2>
+```
+
+#### Componente como clase que hereda de Component
+```js
+class HelloComponent extends Component {
+  render() {
+    return <h2>{this.props.title}</h2>
+  }
+}
+```
+* Usando los componentes
+```html
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Hello title="Ole ole ole"/>
+        <HelloArrow title="Ole ole ole ARROW"/>
+        <HelloComponent title="ole ole ole, COMPONENT!"></HelloComponent>
+      </header>
+    </div>
+  );
+}
+export default App;
+```
 
 
-## 4. Renderizado condicional y listas
+### Entendiendo las props
+* Pasando arrays y objetos como props:
+```js
+class MyComponent extends Component {
+  render() {
+    const isActivated = this.props.isActivated ? 'on' : 'off'
+    const arrayTranform = this.props.arrayOfProps.map(n=>n*2)
+    return (
+      <div>
+        <span>{this.props.text}</span> &nbsp;
+        <span>{this.props.number}</span> &nbsp;
+        <span>{isActivated}</span> &nbsp;
+        <span>{arrayTranform.join(', ')} </span><br></br>
+        <span>nombre: {this.props.person.name} tiene {this.props.person.age}</span>
+      </div>
+    )
+  }
+}
+```
+```html
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <Hello title="Ole ole ole"/>
+        <HelloArrow title="Ole ole ole ARROW"/>
+        <HelloComponent title="ole ole ole, COMPONENT!"></HelloComponent>
+        <MyComponent 
+          arrayOfProps={[3,6,9]}
+          person={{name:'Atanasio', age:43}}
+          isActivated={false}
+          number={33} 
+          text="Titulo" ></MyComponent>
+      </header>
+    </div>
+  );
+}
+```
 
-## 5. React Developer Tools
 
-## 6. Eventos y Formularios
 
-## 7. Children y PropTypes
 
-## 8. Ciclo de Vida de los Componentes
 
-## 9. Buenas Practicas
+### Funciones y elementos como props
 
-## 10. PROYECTO - Buscador de peliculas online
+### Inmutabilidad de las props
 
-## 11. Redux, gestionando el estado global de tu aplicación
+### Props por defecto
 
-## 12. Proyectos de los estudiantes
+### Gestion del estado en ReactJS
+
+### Actualizar estado mediante setState()
+
+### Propagación del estado
+
+### Inicialización del estado mediante Props
+
+## Renderizado condicional y listas
+
+## React Developer Tools
+
+## Eventos y Formularios
+
+## Children y PropTypes
+
+## Ciclo de Vida de los Componentes
+
+## Buenas Practicas
+
+## PROYECTO - Buscador de peliculas online
+
+## Redux, gestionando el estado global de tu aplicación
+
+## Proyectos de los estudiantes
