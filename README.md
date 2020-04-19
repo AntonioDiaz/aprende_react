@@ -1,32 +1,33 @@
 # Aprender React JS
-<!-- TOC depthFrom:2 depthTo:6 withLinks:1 updateOnSave:1 orderedList:0 -->
+<!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
+- [Aprender React JS](#aprender-react-js)
+	- [1. Introduccion del curso](#1-introduccion-del-curso)
+	- [2. Configuracion del entorno](#2-configuracion-del-entorno)
+		- [Linter](#linter)
+	- [3. Conceptos basicos](#3-conceptos-basicos)
+		- [JSX](#jsx)
+	- [4. Renderizado condicional y listas](#4-renderizado-condicional-y-listas)
+	- [5. React Developer Tools](#5-react-developer-tools)
+	- [6. Eventos y Formularios](#6-eventos-y-formularios)
+	- [7. Children y PropTypes](#7-children-y-proptypes)
+	- [8. Ciclo de Vida de los Componentes](#8-ciclo-de-vida-de-los-componentes)
+	- [9. Buenas Practicas](#9-buenas-practicas)
+	- [10. PROYECTO - Buscador de peliculas online](#10-proyecto---buscador-de-peliculas-online)
+	- [11. Redux, gestionando el estado global de tu aplicacion](#11-redux-gestionando-el-estado-global-de-tu-aplicacion)
+	- [12. Proyectos de los estudiantes](#12-proyectos-de-los-estudiantes)
+<!-- TOC END -->
 
-- [1. Introducción del curso](#1-introduccin-del-curso)
-- [2. Configuración del entorno](#2-configuracin-del-entorno)
-	- [Linter](#linter)
-- [3. Conceptos básicos](#3-conceptos-bsicos)
-	- [JSX](#jsx)
-- [4. Renderizado condicional y listas](#4-renderizado-condicional-y-listas)
-- [5. React Developer Tools](#5-react-developer-tools)
-- [6. Eventos y Formularios](#6-eventos-y-formularios)
-- [7. Children y PropTypes](#7-children-y-proptypes)
-- [8. Ciclo de Vida de los Componentes](#8-ciclo-de-vida-de-los-componentes)
-- [9. Buenas Prácticas](#9-buenas-prcticas)
-- [10. PROYECTO - Buscador de películas online](#10-proyecto-buscador-de-pelculas-online)
-- [11. Redux, gestionando el estado global de tu aplicación](#11-redux-gestionando-el-estado-global-de-tu-aplicacin)
-- [12. Proyectos de los estudiantes](#12-proyectos-de-los-estudiantes)
-
-<!-- /TOC -->
-## 1. Introducción del curso
+## 1. Introduccion del curso
 https://www.udemy.com/course/aprendiendo-react/
 
-## 2. Configuración del entorno
+## 2. Configuracion del entorno
 * Install
   * NodeJS
   * Visual Studio Code
   * Create React App
 
 * Create test app
+https://create-react-app.dev/
 ```shell
 $>npx create-react-app my-app  
 $>npm start
@@ -67,7 +68,7 @@ export default App;
 }
 ```
 
-## 3. Conceptos básicos
+## 3. Conceptos basicos
 * Declarativo: indicamos qué y como.
 * Basado en componentes:
   * Partes mas pequeñas de la interfaz.
@@ -148,10 +149,10 @@ var element = React.createElement("div", null,
 
 ## 8. Ciclo de Vida de los Componentes
 
-## 9. Buenas Prácticas
+## 9. Buenas Practicas
 
-## 10. PROYECTO - Buscador de películas online
+## 10. PROYECTO - Buscador de peliculas online
 
-## 11. Redux, gestionando el estado global de tu aplicación
+## 11. Redux, gestionando el estado global de tu aplicacion
 
 ## 12. Proyectos de los estudiantes
