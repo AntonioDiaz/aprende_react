@@ -18,6 +18,22 @@
         - [Componente como Arrow Function](#componente-como-arrow-function)
         - [Componente como clase que hereda de Component](#componente-como-clase-que-hereda-de-component)
     - [Entendiendo las props](#entendiendo-las-props)
+    - [Funciones y elementos como props](#funciones-y-elementos-como-props)
+    - [Inmutabilidad de las props](#inmutabilidad-de-las-props)
+    - [Props por defecto](#props-por-defecto)
+    - [Gestion del estado en ReactJS](#gestion-del-estado-en-reactjs)
+    - [Actualizar estado mediante setState()](#actualizar-estado-mediante-setstate)
+    - [Propagación del estado](#propagaci%C3%B3n-del-estado)
+    - [Inicialización del estado mediante Props](#inicializaci%C3%B3n-del-estado-mediante-props)
+- [Renderizado condicional y listas](#renderizado-condicional-y-listas)
+- [React Developer Tools](#react-developer-tools)
+- [Eventos y Formularios](#eventos-y-formularios)
+- [Children y PropTypes](#children-y-proptypes)
+- [Ciclo de Vida de los Componentes](#ciclo-de-vida-de-los-componentes)
+- [Buenas Practicas](#buenas-practicas)
+- [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
+- [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
+- [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
 
 <!-- /TOC -->
 
@@ -185,9 +201,8 @@ function App() {
 export default App;
 ```
 
-
 ### Entendiendo las props
-* Pasando arrays y objetos como props:
+Pasando arrays y objetos como props
 ```js
 class MyComponent extends Component {
   render() {
@@ -205,29 +220,13 @@ class MyComponent extends Component {
   }
 }
 ```
-```html
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <Hello title="Ole ole ole"/>
-        <HelloArrow title="Ole ole ole ARROW"/>
-        <HelloComponent title="ole ole ole, COMPONENT!"></HelloComponent>
-        <MyComponent 
-          arrayOfProps={[3,6,9]}
-          person={{name:'Atanasio', age:43}}
-          isActivated={false}
-          number={33} 
-          text="Titulo" ></MyComponent>
-      </header>
-    </div>
-  );
-}
+
+```js
+<MyComponent 
+  isActivated={false}
+  number={33} 
+  text="Titulo" ></MyComponent>
 ```
-
-
-
-
 
 ### Funciones y elementos como props
 
