@@ -83,6 +83,8 @@ export default App;
 ### JSX
 Es una sintaxis para generar componentes en React
 https://babeljs.io/repl
+![compiler](docs/babel.png)  
+
 * Ejemplo 01
 ```jsx
 const element = <h1>Hello, world</h1>
