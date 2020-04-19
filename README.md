@@ -1,7 +1,7 @@
 # Aprender React JS
 <!-- TOC START min:1 max:3 link:true asterisk:false update:true -->
 - [Aprender React JS](#aprender-react-js)
-	- [1. Introduccion del curso](#1-introduccion-del-curso)
+	- [1. Introducción del curso](#1-introducción-del-curso)
 	- [2. Configuracion del entorno](#2-configuracion-del-entorno)
 		- [Linter](#linter)
 	- [3. Conceptos basicos](#3-conceptos-basicos)
@@ -13,11 +13,11 @@
 	- [8. Ciclo de Vida de los Componentes](#8-ciclo-de-vida-de-los-componentes)
 	- [9. Buenas Practicas](#9-buenas-practicas)
 	- [10. PROYECTO - Buscador de peliculas online](#10-proyecto---buscador-de-peliculas-online)
-	- [11. Redux, gestionando el estado global de tu aplicacion](#11-redux-gestionando-el-estado-global-de-tu-aplicacion)
+	- [11. Redux, gestionando el estado global de tu aplicación](#11-redux-gestionando-el-estado-global-de-tu-aplicación)
 	- [12. Proyectos de los estudiantes](#12-proyectos-de-los-estudiantes)
 <!-- TOC END -->
 
-## 1. Introduccion del curso
+## 1. Introducción del curso
 https://www.udemy.com/course/aprendiendo-react/
 
 ## 2. Configuracion del entorno
@@ -153,6 +153,6 @@ var element = React.createElement("div", null,
 
 ## 10. PROYECTO - Buscador de peliculas online
 
-## 11. Redux, gestionando el estado global de tu aplicacion
+## 11. Redux, gestionando el estado global de tu aplicación
 
 ## 12. Proyectos de los estudiantes
