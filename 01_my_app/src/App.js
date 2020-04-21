@@ -16,15 +16,16 @@ class HelloComponent extends Component {
 
 class MyComponent extends Component {
   render() {
-    const isActivated = this.props.isActivated ? 'on' : 'off'
-    const arrayTranform = this.props.arrayOfProps.map(n=>n*2)
+    const {title, isActivated, arrayOfProps, person, multiply} = this.props
+    const arrayTranform = arrayOfProps.map(multiply)
     return (
       <div>
         <span>{this.props.text}</span> &nbsp;
         <span>{this.props.number}</span> &nbsp;
         <span>{isActivated}</span> &nbsp;
         <span>{arrayTranform.join(', ')} </span><br></br>
-        <span>nombre: {this.props.person.name} tiene {this.props.person.age}</span>
+        <span>*nombre: {person.name} tiene {person.age}</span>
+        {title}
       </div>
     )
   }
@@ -41,8 +42,10 @@ function App() {
           arrayOfProps={[3,6,9]}
           person={{name:'Atanasio', age:43}}
           isActivated={false}
+          multiply={(n) => n*4}
           number={33} 
-          text="Titulo" ></MyComponent>
+          text="Titulo" 
+          title={<h1>vamos ahi!</h1>}></MyComponent>
       </header>
     </div>
   );

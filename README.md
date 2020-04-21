@@ -19,6 +19,8 @@
         - [Componente como clase que hereda de Component](#componente-como-clase-que-hereda-de-component)
     - [Entendiendo las props](#entendiendo-las-props)
     - [Funciones y elementos como props](#funciones-y-elementos-como-props)
+        - [Funcion para multiplicar](#funcion-para-multiplicar)
+        - [Patrón deconstruccion](#patr%C3%B3n-deconstruccion)
     - [Inmutabilidad de las props](#inmutabilidad-de-las-props)
     - [Props por defecto](#props-por-defecto)
     - [Gestion del estado en ReactJS](#gestion-del-estado-en-reactjs)
@@ -207,7 +209,7 @@ Pasando arrays y objetos como props
 class MyComponent extends Component {
   render() {
     const isActivated = this.props.isActivated ? 'on' : 'off'
-    const arrayTranform = this.props.arrayOfProps.map(n=>n*2)
+    const arrayTranform = this.props.arrayOfProps.map(this.props.multiply)
     return (
       <div>
         <span>{this.props.text}</span> &nbsp;
@@ -223,12 +225,60 @@ class MyComponent extends Component {
 
 ```js
 <MyComponent 
+  arrayOfProps={[3,6,9]}
+  person={{name:'Atanasio', age:43}}
   isActivated={false}
+  multiply={(n) => n * 4}
   number={33} 
   text="Titulo" ></MyComponent>
 ```
 
 ### Funciones y elementos como props
+
+#### Funcion para multiplicar
+```js
+class MyComponent extends Component {
+  render() {
+    const arrayTranform = this.props.arrayOfProps.map(this.props.multiply)
+    return (
+      <div>
+        <span>{arrayTranform.join(', ')} </span><br></br>
+      </div>
+    )
+  }
+}
+```
+
+```js
+<MyComponent 
+  arrayOfProps={[3,6,9]}
+  multiply={(n) => n*4}></MyComponent>
+```
+
+#### Patrón deconstruccion
+```js
+    const {isActivated, arrayOfProps, person, multiply} = this.props
+```
+ #### Renderizar components dentro de componentes
+
+```js
+class MyComponent extends Component {
+  render() {
+    const {title} = this.props
+    return (
+      <div>
+        {title}
+      </div>
+    )
+  }
+}
+```
+
+```js
+<MyComponent 
+  title={<h1>vamos ahi!</h1>}></MyComponent>
+```
+ 
 
 ### Inmutabilidad de las props
 
