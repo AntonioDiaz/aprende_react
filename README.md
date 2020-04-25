@@ -1,6 +1,6 @@
 # Aprender React JS
 
-<!-- TOC depthfrom:2 orderedlist:false -->
+<!-- TOC depthfrom:2 depthto:3 orderedlist:false -->
 
 - [Introducción del curso](#introducci%C3%B3n-del-curso)
 - [Configuracion del entorno](#configuracion-del-entorno)
@@ -8,19 +8,9 @@
 - [Conceptos basicos](#conceptos-basicos)
     - [Introducción sobre los conceptos básicos de React](#introducci%C3%B3n-sobre-los-conceptos-b%C3%A1sicos-de-react)
     - [Introdución a JSX](#introduci%C3%B3n-a-jsx)
-        - [Ejemplo 01](#ejemplo-01)
-        - [Ejemplo 02: expresion](#ejemplo-02-expresion)
-        - [Ejemplo 03: funciones](#ejemplo-03-funciones)
-        - [Ejemplo 04: atributos](#ejemplo-04-atributos)
-        - [Ejemplo 05: two elements](#ejemplo-05-two-elements)
     - [Componentes en ReactJS](#componentes-en-reactjs)
-        - [Componente como Function](#componente-como-function)
-        - [Componente como Arrow Function](#componente-como-arrow-function)
-        - [Componente como clase que hereda de Component](#componente-como-clase-que-hereda-de-component)
     - [Entendiendo las props](#entendiendo-las-props)
     - [Funciones y elementos como props](#funciones-y-elementos-como-props)
-        - [Funcion para multiplicar](#funcion-para-multiplicar)
-        - [Patrón deconstruccion](#patr%C3%B3n-deconstruccion)
     - [Inmutabilidad de las props](#inmutabilidad-de-las-props)
     - [Props por defecto](#props-por-defecto)
     - [Gestion del estado en ReactJS](#gestion-del-estado-en-reactjs)
@@ -28,6 +18,10 @@
     - [Propagación del estado](#propagaci%C3%B3n-del-estado)
     - [Inicialización del estado mediante Props](#inicializaci%C3%B3n-del-estado-mediante-props)
 - [Renderizado condicional y listas](#renderizado-condicional-y-listas)
+    - [Introducción sobre el renderizado condicional](#introducci%C3%B3n-sobre-el-renderizado-condicional)
+    - [Condicionales en el método Render](#condicionales-en-el-m%C3%A9todo-render)
+    - [Utilizando ternarias](#utilizando-ternarias)
+    - [Trabajando con listas](#trabajando-con-listas)
 - [React Developer Tools](#react-developer-tools)
 - [Eventos y Formularios](#eventos-y-formularios)
 - [Children y PropTypes](#children-y-proptypes)
@@ -351,6 +345,13 @@ class Contador extends Component {
 
 ## Renderizado condicional y listas
 
+### Introducción sobre el renderizado condicional
+
+### Condicionales en el método Render
+
+### Utilizando ternarias
+
+### Trabajando con listas
 
 ## React Developer Tools
 
