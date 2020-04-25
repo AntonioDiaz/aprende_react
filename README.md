@@ -345,9 +345,45 @@ class Contador extends Component {
 
 ## Renderizado condicional y listas
 
-### Introducción sobre el renderizado condicional
+
 
 ### Condicionales en el método Render
+```js
+import React, {Component} from 'react'
+
+class ComponenteA extends Component {
+    render() {
+        return <p>componente A</p>
+    }
+}
+
+class ComponenteB extends Component {
+    render() {
+        return <p>componente B</p>
+    }
+}
+
+function userConditional(mostrarA) {
+    if (mostrarA) 
+        return <ComponenteA/>
+    return <ComponenteB/>
+}
+
+export default class ConditonalSection extends Component {
+    constructor() {
+        super()
+        this.state = {mostrarA: true}
+    }
+    render() {
+        return (
+            <div>
+                <h4>Conditional Rendering</h4>
+                {userConditional(this.state.mostrarA)}
+            </div>
+        )
+    }
+}
+```
 
 ### Utilizando ternarias
 
