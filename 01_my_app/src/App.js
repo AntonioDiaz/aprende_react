@@ -14,10 +14,31 @@ class HelloComponent extends Component {
   }
 }
 
+class Contador extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { contador: this.props.contadorInitial}
+    setInterval(() => {
+      this.setState({contador: this.state.contador + 1})
+    }, 1000)
+  }
+
+  render() {
+    return <ContadorNumero numero={this.state.contador}></ContadorNumero>
+  }
+}
+
+class ContadorNumero extends Component {
+  render() {
+  return <span>ContadorNumero: {this.props.numero}</span>
+  }
+}
+
 class MyComponent extends Component {
   render() {
     const {title, isActivated, arrayOfProps, person, multiply} = this.props
     const arrayTranform = arrayOfProps.map(multiply)
+    //title = <h3>erroraco</h3>
     return (
       <div>
         <span>{this.props.text}</span> &nbsp;
@@ -29,6 +50,16 @@ class MyComponent extends Component {
       </div>
     )
   }
+}
+
+class Title extends Component {
+  render() {
+    return <h3>{this.props.text}</h3>;
+  }
+}
+
+Title.defaultProps = {
+  text: 'titulo x defecto'
 }
 
 function App() {
@@ -46,6 +77,8 @@ function App() {
           number={33} 
           text="Titulo" 
           title={<h1>vamos ahi!</h1>}></MyComponent>
+      <Title text="vamos vamos!!!"></Title>
+      <Contador contadorInitial={69}></Contador>
       </header>
     </div>
   );

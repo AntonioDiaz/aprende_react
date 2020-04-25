@@ -281,14 +281,60 @@ class MyComponent extends Component {
  
 
 ### Inmutabilidad de las props
+* No se pueden modificar las propiedades.
+* Excepcion cuando se intenta modificar una property 
+>TypeError: Assignment to constant variable.
+
 
 ### Props por defecto
+```js
+class Title extends Component {
+  render() {
+    return <h3>{this.props.text}</h3>;
+  }
+}
+
+Title.defaultProps = {
+  text: 'titulo x defecto'
+}
+```
+
 
 ### Gestion del estado en ReactJS
+* Ejemplo de componente con estado:
+```js
+class Contador extends Component {
+  constructor() {
+    super()
+    this.state = { contador: 1}
+  }
+
+  render() {
+    return <span>{this.state.contador}</span>
+  }
+}
+```
 
 ### Actualizar estado mediante setState()
+* React es declarativo y reactivo
+```js
+class Contador extends Component {
+  constructor() {
+    super()
+    this.state = { contador: 1}
+    setInterval(() => {
+      this.setState({contador: this.state.contador + 1})
+    }, 1000)
+  }
+  render() {
+    return <span>{this.state.contador}</span>
+  }
+}
+```
 
 ### Propagación del estado
+* Cada cambio en el padre provoca el renderiazado de todos los hijos.
+
 
 ### Inicialización del estado mediante Props
 
