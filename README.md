@@ -333,12 +333,24 @@ class Contador extends Component {
 ```
 
 ### Propagación del estado
-* Cada cambio en el padre provoca el renderiazado de todos los hijos.
+* Cada cambio en el state padre provoca el renderiazado de todos los hijos. 
+* El flujo es uniderccional.
 
 
 ### Inicialización del estado mediante Props
+```js
+class Contador extends Component {
+  constructor(props) {
+    super(props)
+    this.state = { contador: this.props.contadorInitial}
+    setInterval(() => {
+      this.setState({contador: this.state.contador + 1})
+    }, 1000)
+  }
+```
 
 ## Renderizado condicional y listas
+
 
 ## React Developer Tools
 
