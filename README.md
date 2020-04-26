@@ -24,6 +24,15 @@
     - [Listas de objetos](#listas-de-objetos)
 - [React Developer Tools](#react-developer-tools)
 - [Eventos y Formularios](#eventos-y-formularios)
+    - [El evento onClick](#el-evento-onclick)
+    - [Eventos sintéticos](#eventos-sint%C3%A9ticos)
+    - [Eventos sportados](#eventos-sportados)
+    - [Eventos en React](#eventos-en-react)
+    - [Formularios en React](#formularios-en-react)
+    - [Particularidades del atributo For](#particularidades-del-atributo-for)
+    - [Entendiendo las Refs](#entendiendo-las-refs)
+    - [El evento onSubmit](#el-evento-onsubmit)
+    - [Componentes controlados](#componentes-controlados)
 - [Children y PropTypes](#children-y-proptypes)
 - [Ciclo de Vida de los Componentes](#ciclo-de-vida-de-los-componentes)
 - [Buenas Practicas](#buenas-practicas)
@@ -457,8 +466,28 @@ class ListaObjetos extends Component {
 
 
 ## React Developer Tools
+* https://github.com/facebook/react
+* https://www.fotocasa.es/es/
 
 ## Eventos y Formularios
+
+### El evento onClick
+
+### Eventos sintéticos
+
+### Eventos sportados
+
+### Eventos en React
+
+### Formularios en React
+
+### Particularidades del atributo For
+
+### Entendiendo las Refs
+
+### El evento onSubmit
+
+### Componentes controlados
 
 ## Children y PropTypes
 
