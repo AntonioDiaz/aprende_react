@@ -472,10 +472,77 @@ class ListaObjetos extends Component {
 ## Eventos y Formularios
 
 ### El evento onClick
+```js
+import React from 'react';
+import logo from './logo.svg';
+import './App.css';
+
+function App() {
+  return (
+    <div className="App">
+        <h4>Eventos</h4>
+        <button onClick={() => alert("sorpresa!!")} >Click on me!!</button>
+    </div>
+  );
+}
+
+export default App;
+```
 
 ### Eventos sintéticos
+* Eventos sintenticos: recubrimientos sobre los eventos nativos para que sean compatibles en distintos navegadores.
+```js
+class App extends Component {
+    handleClick(e) {
+      console.log (e)
+      console.log (e.nativeEvent)
+      alert ('toma toma!!')
+    }
+    render() {
+      return (
+        <div className="App">
+            <h4>Eventos</h4>
+            <button onClick={this.handleClick} >Click on me!!</button>
+        </div>
+      );
+    }
+}
+````
 
 ### Eventos sportados
+* Hay que enlazar el evento con el contexto, esto se puede hacer:
+  * Añadiendo al constuctor del componente la insturccion de enlazar:
+  > this.handleMouseMove = this.handleMouseMove.bind(this)
+  * Usando una **arrow function** al declarar la funcion, ya que las arrow functions enlazan siempre el contexto desde el que se declaran.
+  
+```js
+class App extends Component {
+  constructor() {
+    super()
+    this.state = { mouseX: 0, mouseY: 0 }
+    //this.handleMouseMove = this.handleMouseMove.bind(this)
+  }
+
+  handleMouseMove = (e) => {
+    const {clientX, clientY} = e
+    this.setState({mouseX: clientX, mouseY: clientY})
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <h4>Eventos</h4>
+          <button onClick={this.handleClick} >Click on me!!</button>
+          <div
+              onMouseMove={this.handleMouseMove}
+              style={{border:'1px solid #000', marginTop: 10, padding: 10}} >
+            <p>{this.state.mouseX}, {this.state.mouseY}</p>
+          </div>      
+      </div>
+    );
+  }
+}
+```
 
 ### Eventos en React
 
