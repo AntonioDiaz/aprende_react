@@ -2,16 +2,17 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import ConditionalSection from './sections/conditional'
+import cars from './data/cars.json'
 
 function Hello(props) {
-  return <h2>{props.title}</h2>
+  return <h4>{props.title}</h4>
 }
 
-const HelloArrow = (props) => <h2>{props.title}</h2>
+const HelloArrow = (props) => <h4>{props.title}</h4>
 
 class HelloComponent extends Component {
   render() {
-    return <h2>{this.props.title}</h2>
+    return <h4>{this.props.title}</h4>
   }
 }
 
@@ -55,7 +56,7 @@ class MyComponent extends Component {
 
 class Title extends Component {
   render() {
-    return <h3>{this.props.text}</h3>;
+    return <p>{this.props.text}</p>;
   }
 }
 
@@ -63,10 +64,47 @@ Title.defaultProps = {
   text: 'titulo x defecto'
 }
 
+class ListaNumeros extends Component {
+  render() {
+    const numbers = [1,2,3,4,5]
+    return (
+      <div><h3>Lista Numeros</h3>
+        {numbers.map((e, index) => {return <p key={index}>num: {e}</p>})}
+      </div>
+    )
+  }
+}
+
+class CarItem extends Component {
+  render() {
+    const {car, id} = this.props
+    return (
+      <li>
+        <p>Key: {id}</p>
+        <p>Car Company: {car.company}</p>
+        <p>Car Name: {car.name}</p>
+        <br/>
+      </li>
+    )
+  }
+}
+
+class ListaObjetos extends Component {
+  render() {
+    return (
+      <div><h3>Lista Objetos</h3>
+        <ul>
+          {cars.map(car => {return <CarItem id={car.id} car={car}/>})}
+        </ul>
+      </div>
+    )
+  }
+}
+
+
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
         <Hello title="Ole ole ole"/>
         <HelloArrow title="Ole ole ole ARROW"/>
         <HelloComponent title="ole ole ole, COMPONENT!"></HelloComponent>
@@ -77,11 +115,12 @@ function App() {
           multiply={(n) => n*4}
           number={33} 
           text="Titulo" 
-          title={<h1>vamos ahi!</h1>}></MyComponent>
+          title={<p>vamos ahi!</p>}></MyComponent>
       <Title text="vamos vamos!!!"></Title>
       <Contador contadorInitial={69}></Contador>
       <ConditionalSection></ConditionalSection>
-      </header>
+      <ListaNumeros/>
+      <ListaObjetos/>
     </div>
   );
 }

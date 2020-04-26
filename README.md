@@ -18,10 +18,10 @@
     - [Propagación del estado](#propagaci%C3%B3n-del-estado)
     - [Inicialización del estado mediante Props](#inicializaci%C3%B3n-del-estado-mediante-props)
 - [Renderizado condicional y listas](#renderizado-condicional-y-listas)
-    - [Introducción sobre el renderizado condicional](#introducci%C3%B3n-sobre-el-renderizado-condicional)
     - [Condicionales en el método Render](#condicionales-en-el-m%C3%A9todo-render)
     - [Utilizando ternarias](#utilizando-ternarias)
     - [Trabajando con listas](#trabajando-con-listas)
+    - [Listas de objetos](#listas-de-objetos)
 - [React Developer Tools](#react-developer-tools)
 - [Eventos y Formularios](#eventos-y-formularios)
 - [Children y PropTypes](#children-y-proptypes)
@@ -386,8 +386,75 @@ export default class ConditonalSection extends Component {
 ```
 
 ### Utilizando ternarias
+```js
+const conditionalComponent = this.state.mostrarA ? <ComponenteA/> : <ComponenteB/>
+```
 
 ### Trabajando con listas
+```js
+class Lista extends Component {
+  render() {
+    const numbers = [1,2,3,4,5]
+    return (
+      <div>Lista:
+        {numbers.map((e, index) => {return <p key={index}>num: {e}</p>})}
+      </div>
+    )
+  }
+}
+```
+
+### Listas de objetos
+* Definir objetos:
+```json
+[
+    {
+        "id": "7f9b3b74-8721-11ea-bc55-0242ac130003",
+        "name": "CEED",
+        "company": "KIA"
+    },{
+        "id": "1d09517b-a124-4c1f-8a32-f317dd6b368e",
+        "name": "CARENS",
+        "company": "KIA"
+    },{
+        "id": "4ef53ef2-88e2-43d7-8c45-f12a9f2010c8",
+        "name": "CORSA",
+        "company": "OPEL"
+    }
+]
+```
+
+* Definir Componentes
+```js
+import cars from './data/cars.json'
+
+class CarItem extends Component {
+  render() {
+    const {car, id} = this.props
+    return (
+      <li>
+        <p>Key: {id}</p>
+        <p>Car Company: {car.company}</p>
+        <p>Car Name: {car.name}</p>
+        <br/>
+      </li>
+    )
+  }
+}
+
+class ListaObjetos extends Component {
+  render() {
+    return (
+      <div><h3>Lista Objetos</h3>
+        <ul>
+          {cars.map(car => {return <CarItem id={car.id} car={car}/>})}
+        </ul>
+      </div>
+    )
+  }
+}
+```
+
 
 ## React Developer Tools
 
