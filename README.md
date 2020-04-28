@@ -27,7 +27,6 @@
     - [El evento onClick](#el-evento-onclick)
     - [Eventos sintéticos](#eventos-sint%C3%A9ticos)
     - [Eventos sportados](#eventos-sportados)
-    - [Eventos en React](#eventos-en-react)
     - [Formularios en React](#formularios-en-react)
     - [Particularidades del atributo For](#particularidades-del-atributo-for)
     - [Entendiendo las Refs](#entendiendo-las-refs)
@@ -544,17 +543,161 @@ class App extends Component {
 }
 ```
 
-### Eventos en React
-
 ### Formularios en React
+* Usar el componente formulario desde app.js:
+```js
+import Forms from './sections/forms';
+
+function App() {
+  return (
+    <div className="App">
+      <Forms></Forms>
+    </div>
+  );
+}
+
+```
+* Crear componente formulario:
+```js
+import React, {Component} from 'react'
+
+export default class Forms extends Component {
+    //metodo para recoger los datos.
+    handleClick(e) {
+        e.preventDefault()
+        const name = document.getElementById('name').value
+        const twitter = document.getElementById('twitter').value
+        console.log({name, twitter})
+    }
+    render() {
+        return (
+            <div>
+                <h4>Fromularios</h4>
+                <form>
+                    <p>
+                        <label>Nombre</label> 
+                        <input type="text" id="name" placeholder="pon tu nombre"/>
+                    </p>
+                    <p>
+                        <label>Twitter</label>
+                        <input type="text" id="twitter" placeholder="pon tu Twitter"/>
+                    </p>
+                    <button onClick={this.handleClick}>Enviar</button>
+                </form>
+            </div>
+
+        )
+    }
+}
+```
 
 ### Particularidades del atributo For
+* For the html pasa a ser __htmlFor__ en react:
+```js
+<label htmlFor='name' >Nombre</label> 
+```
 
 ### Entendiendo las Refs
+* Ref: para recupera la referencia de un objeto en el arbol DOM.
+* No se utiliza en formularios.
+* Se utiliza para integrar librerias externas.
+```js
+export default class Forms extends Component {
+    //metodo para recoger los datos.
+    handleClick = (e) => {
+        e.preventDefault()
+        const name = this.inputName.value
+        const twitter = document.getElementById('twitter').value
+        console.log({name, twitter})
+    }
+    render() {
+        return (
+            <div>
+                <h4>Fromularios</h4>
+                <form>
+                    <p>
+                        <label htmlFor='name' >Nombre</label> 
+                        <input 
+                            i d="name" 
+                            placeholder="pon tu nombre"
+                            ref={inputElement => this.inputName = inputElement}/>
+                    </p>
+      ....
+```
 
 ### El evento onSubmit
+```js
+handleChange = (e) => {
+    console.log("handleChange")
+    console.log(e.target.checked)
+}
+```
 
 ### Componentes controlados
+Steps:
+1. Crear las referencias.
+2. En el evento onchange asignar los valores a las referencias.
+```js
+export default class Forms extends Component {
+    constructor() {
+        super()
+        this.state = {
+            inputName: "",
+            inputTwitter: "@",
+            inputTerms: true
+        }
+    }
+
+    //metodo para recoger los datos.
+    handleSubmit = (e) => {
+        e.preventDefault()
+        console.log(this.state)
+    }
+    handleChange = (e) => {
+        console.log("handleChange")
+        console.log(e.target.checked)
+        this.setState({inputTerms: e.target.checked})
+    }
+    render() {
+        return (
+            <div>
+                <h4>Fromularios</h4>
+                <form onSubmit={this.handleSubmit}>
+                    <p>
+                        <label htmlFor='name' >Nombre</label> 
+                        <input 
+                            id="name" 
+                            placeholder="pon tu nombre"
+                            ref={inputElement => this.inputName = inputElement}
+                            onChange={e => this.setState({inputName: e.target.value})}
+                            value={this.state.inputName}/>
+                    </p>
+                    <p>
+                        <label htmlFor="twitter">Twitter</label>
+                        <input 
+                            id="twitter" 
+                            ref={inputElement => this.inputTwitter = inputElement}
+                            onChange={e => this.setState({inputTwitter: e.target.value})}
+                            type="text" 
+                            placeholder="pon tu Twitter"
+                            value={this.state.inputTwitter}/>
+                    </p>
+                    <p>
+                        <label>
+                            <input 
+                                onChange={this.handleChange} 
+                                type="checkbox"
+                                checked={this.state.inputTerms}/>
+                            Vender alma a belcebú
+                        </label>
+                    </p>
+                    <button onClick={this.handleClick}>Enviar</button>
+                </form>
+            </div>
+        )
+    }
+}
+```
 
 ## Children y PropTypes
 
