@@ -33,6 +33,9 @@
     - [El evento onSubmit](#el-evento-onsubmit)
     - [Componentes controlados](#componentes-controlados)
 - [Children y PropTypes](#children-y-proptypes)
+    - [La prop especial Children](#la-prop-especial-children)
+    - [Children Layout](#children-layout)
+    - [Desarrollando con PropTypes](#desarrollando-con-proptypes)
 - [Ciclo de Vida de los Componentes](#ciclo-de-vida-de-los-componentes)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
@@ -700,6 +703,74 @@ export default class Forms extends Component {
 ```
 
 ## Children y PropTypes
+
+### La prop especial Children
+* Se utiliza para layouts reutilizables.
+* __{this.props.children}__: para acceder al contenido de una etiqueta.
+
+```js
+class Box extends Component {
+  render() {
+    return (
+      <div style={{border:'1px solid #000', margin:5, padding: 5}}>
+        {this.props.children}
+      </div>
+    );
+  }
+}
+
+function App() {
+  return (
+    <div className="App">
+      <h4>Children Props</h4>
+      <Box>Hola Layout 01</Box>
+      <Box>Hola Layout 02</Box>
+    </div>
+  );
+}
+```
+
+### Children Layout
+* Article example:
+```js
+class Article extends Component {
+  render() {
+      return(
+        <section>
+          <h2>{this.props.title}</h2>
+          <p><em>Escrito por {this.props.author}</em></p>
+          <Box>{this.props.date}</Box>
+          <article>
+            {this.props.children}
+          </article>
+        </section>
+      )
+  }
+}
+```
+
+### Desarrollando con PropTypes
+* Instalar la librería:
+```shell 
+npm install prop-types -SE
+
+```
+* Importarlas y declarar los tipos de datos y si son obligatorios.
+```js
+import PropTypes from 'prop-types'
+...
+class Article extends Component {
+  static propTypes = {
+    author: PropTypes.string.isRequired
+  }
+  constructor(props) {
+    super(props)
+  }
+  render() {
+    ...
+  }
+}
+```
 
 ## Ciclo de Vida de los Componentes
 
