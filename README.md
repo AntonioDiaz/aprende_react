@@ -748,6 +748,15 @@ class Article extends Component {
   }
 }
 ```
+* Usando 
+```js
+<Article
+  author="Antoine"
+  date={new Date().toLocaleDateString()}
+  title="Articulo de Angular JS">
+    <p><strong>AngularJS</strong> (comúnmente llamado Angular.js o AngularJS 1), es un framework de JavaScript de código abierto, mantenido por Google, que se utiliza para crear y mantener aplicaciones web de una sola página.</p>
+</Article>  
+```
 
 ### Desarrollando con PropTypes
 * Instalar la librería:
