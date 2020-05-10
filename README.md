@@ -804,6 +804,8 @@ class Article extends Component {
     * Eliminamos listener
     * Eliminamos referencias al DOM
 
+[![](https://mermaid.ink/img/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+
 ### El Constructor
 * Ciclo de montaje
   * Se ejecuta siempre y sólo lo hace una vez
@@ -811,16 +813,6 @@ class Article extends Component {
   * Obtiene las props
   * Primera ejecución del método render
   * Termina con el componente montado en el DOM
-```mermaid
-stateDiagram
-	[*] --> Constructor
-  Constructor --> ComponentWillMount
-  ComponentWillMount --> render
-  render --> componentDidMount
-	componentDidMount --> [*]
-```
-
-> constructor(props) > componentWillMount() > render() > componentDidMount()
 * Constructor por defecto
 ```js
 constructor(...args) {
@@ -842,6 +834,11 @@ handleClick = () => {
 ```
 
 ### ComponentwillMount
+* Se ejecuta una vez
+* Se invoca antes de montar el componente y antes del render
+* Todavía no tenemos el componente disponible en el DOM
+* Se recomienda usar el constructor en su lugar
+* Se puede usar setState y no provoca otro render
 
 
 ## Buenas Practicas
