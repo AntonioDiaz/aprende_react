@@ -493,9 +493,11 @@ export default App;
 
 ### Eventos sintéticos
 * Eventos sintenticos: recubrimientos sobre los eventos nativos para que sean compatibles en distintos navegadores.
+* https://es.reactjs.org/docs/handling-events.html
 ```js
 class App extends Component {
     handleClick(e) {
+      //e es un evento sintetico.
       console.log (e)
       console.log (e.nativeEvent)
       alert ('toma toma!!')
@@ -623,7 +625,7 @@ export default class Forms extends Component {
                         <input 
                             i d="name" 
                             placeholder="pon tu nombre"
-                            ref={inputElement => this.inputName = inputElement}/>
+                            ref={i => this.inputName = i}/>
                     </p>
       ....
 ```
@@ -671,7 +673,7 @@ export default class Forms extends Component {
                         <input 
                             id="name" 
                             placeholder="pon tu nombre"
-                            ref={inputElement => this.inputName = inputElement}
+                            ref={i => this.inputName = i}
                             onChange={e => this.setState({inputName: e.target.value})}
                             value={this.state.inputName}/>
                     </p>
@@ -679,7 +681,7 @@ export default class Forms extends Component {
                         <label htmlFor="twitter">Twitter</label>
                         <input 
                             id="twitter" 
-                            ref={inputElement => this.inputTwitter = inputElement}
+                            ref={i => this.inputTwitter = i}
                             onChange={e => this.setState({inputTwitter: e.target.value})}
                             type="text" 
                             placeholder="pon tu Twitter"
