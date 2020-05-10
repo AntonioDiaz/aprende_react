@@ -37,6 +37,9 @@
     - [Children Layout](#children-layout)
     - [Desarrollando con PropTypes](#desarrollando-con-proptypes)
 - [Ciclo de Vida de los Componentes](#ciclo-de-vida-de-los-componentes)
+    - [Fases](#fases)
+    - [El Constructor](#el-constructor)
+    - [ComponentwillMount](#componentwillmount)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -784,6 +787,62 @@ class Article extends Component {
 ```
 
 ## Ciclo de Vida de los Componentes
+
+### Fases
+* __Ciclo de vida__: fases de ejecucion por las que pasa un componente de React.
+* 3 fase:
+  * __Montaje__
+    * Se ejecuta siempre y solo lo hace una vez
+    * Contruye el componente con su estado inicial
+    * Obtiene las props
+    * Bindeamos métodos de Clase
+    * Primera ejecución de render()
+  * __Actualización__
+    * Por defecto se ejecuta cada vez que recibe props o se actualiza su estado
+    * Podemos controlar cuando el componente necesita renderizarse de nuevo
+  * __Desmontaje__
+    * Eliminamos listener
+    * Eliminamos referencias al DOM
+
+### El Constructor
+* Ciclo de montaje
+  * Se ejecuta siempre y sólo lo hace una vez
+  * Contruye el component en su estado inicial
+  * Obtiene las props
+  * Primera ejecución del método render
+  * Termina con el componente montado en el DOM
+```mermaid
+stateDiagram
+	[*] --> Constructor
+  Constructor --> ComponentWillMount
+  ComponentWillMount --> render
+  render --> componentDidMount
+	componentDidMount --> [*]
+```
+
+> constructor(props) > componentWillMount() > render() > componentDidMount()
+* Constructor por defecto
+```js
+constructor(...args) {
+  super(...args)
+```
+* Ejemplo de constructor que inicializa estado y enlaza un método con el contexto. Esto último no es necesario si se declara el metodo con arrow function.
+```js
+constructor(props) {
+  super(props)
+  this.state = { mensajeInicial: 'mensaje inicial' }
+  //this.handleClick = this.handleClick.bind(this)
+}
+```
+* Arrow function:
+```js
+handleClick = () => {
+  this.setState({mensajeInicial: 'nuevo mensaje'})
+}
+```
+
+### ComponentwillMount
+
 
 ## Buenas Practicas
 
