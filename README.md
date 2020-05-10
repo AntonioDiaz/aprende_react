@@ -40,6 +40,8 @@
     - [Fases](#fases)
     - [El Constructor](#el-constructor)
     - [ComponentwillMount](#componentwillmount)
+    - [Render](#render)
+    - [ComponentDidMount](#componentdidmount)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -839,6 +841,18 @@ handleClick = () => {
 * Todavía no tenemos el componente disponible en el DOM
 * Se recomienda usar el constructor en su lugar
 * Se puede usar setState y no provoca otro render
+
+### Render
+* El único método obligatorio en nuestro componente
+* Retorna los elementos que queremos mostrar en la interfaz
+* __No se debe llamar al setState, provocaría un loop infinito__
+* Se debe encargar de transformar los states y las props en una representacion visual en la aplicación
+* Evitar operaciones y transormaciones ya que penaliza el rendimiento de la aplicación 
+* Cuando devuelve null no reneriza nada 
+* __Renderaizado condicional__ renderiza dependiendo del valor de alguna propiedad
+* __Fragmentos__ se puede devolver una lista, y se van a renderizar todos los elementos, __hay que añadir una KEY__
+
+### ComponentDidMount
 
 
 ## Buenas Practicas
