@@ -792,7 +792,7 @@ class Article extends Component {
 
 ### Fases
 * __Ciclo de vida__: fases de ejecucion por las que pasa un componente de React.
-* 3 fase:
+* Hay 3 fases:
   * __Montaje__
     * Se ejecuta siempre y solo lo hace una vez
     * Contruye el componente con su estado inicial
@@ -853,7 +853,20 @@ handleClick = () => {
 * __Fragmentos__ se puede devolver una lista, y se van a renderizar todos los elementos, __hay que añadir una KEY__
 
 ### ComponentDidMount
+* Se ejecuta tras renderizar el componente
+* Ya tendremos una representación en el DOM
+* Aquí podemos añadir las llamadas para recuperar datos del servidor y escuchar eventos
+* se puede usar el __setState__ 
 
+```js
+componentDidMount(){
+    console.log('componentDidMount'); 
+    document.addEventListener('scroll', () => {
+        console.log(window.scrollY)
+        this.setState({scroll: window.scrollY})
+    })       
+}
+```
 
 ## Buenas Practicas
 
