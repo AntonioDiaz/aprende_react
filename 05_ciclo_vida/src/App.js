@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ComponentWillMount from './sections/life-cycle/componentWillMount'
 import EjemploDeComponenteDidMount from './sections/life-cycle/componenteDidMount'
+import FetchExample from './sections/life-cycle/fetch-example'
 
 class App extends Component {
  
@@ -28,6 +29,8 @@ class App extends Component {
         <ComponentWillMount/>
         <hr/>
         <EjemploDeComponenteDidMount/>
+        <hr></hr>
+        <FetchExample></FetchExample>
       </div>
     );
   }

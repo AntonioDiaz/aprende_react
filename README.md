@@ -42,6 +42,7 @@
     - [ComponentwillMount](#componentwillmount)
     - [Render](#render)
     - [ComponentDidMount](#componentdidmount)
+    - [Fetch API](#fetch-api)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -867,6 +868,10 @@ componentDidMount(){
     })       
 }
 ```
+
+### Fetch API
+Ejemplo que muestra la cotizacion del Bitcon en dolares, libras y euros.
+https://www.coindesk.com/api
 
 ## Buenas Practicas
 
