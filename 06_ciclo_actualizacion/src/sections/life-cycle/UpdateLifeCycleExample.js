@@ -11,28 +11,29 @@ const ANIMAL_KEYS = Object.keys(ANIMAL_IMAGES)
 
 class AnimalImage extends Component {
     state = { 
-        animalName: ANIMAL_KEYS[this.props.animalIndex],
-        animalUrl: ANIMAL_IMAGES[ANIMAL_KEYS[this.props.animalIndex]]
+        animalIndex: this.props.animalIndex
     }
     //se ejecuta siempre que llegan nuevas props (que pueden ser igual que las propiedades que teniamos).
     componentWillReceiveProps(nextProps) {
-        console.log('nextProps -> ' + JSON.stringify(nextProps));
         this.setState({
-            animalName: ANIMAL_KEYS[nextProps.animalIndex],
-            animalUrl: ANIMAL_IMAGES[ANIMAL_KEYS[nextProps.animalIndex]]
+            animalIndex: nextProps.animalIndex
         })
-        console.log('state name' + this.state.animalName);
-        console.log('state url' + this.state.animalUrl);
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.animalIndex !== this.state.animalIndex
     }
 
     render() {
+        let animalName = ANIMAL_KEYS[this.state.animalIndex]
+        let animalUrl = ANIMAL_IMAGES[animalName]
         console.log('render....' + this.props.animalIndex);
         return (
             <div>
-                <p>Selected {this.state.animalName}</p>
+                <p>Selected {animalName}</p>
                 <img 
-                    alt={this.state.animalName}
-                    src={this.state.animalUrl}
+                    alt={animalName}
+                    src={animalUrl}
                     width='250'/>
             </div>
         )
@@ -51,19 +52,20 @@ class UpdateLifeCycleExample extends Component {
     }
 
     renderAnimalButton = (newAnimal) => {
+        let newAnimalIndex = ANIMAL_KEYS.indexOf(newAnimal);
         let colorButton = '';
-        if (newAnimal === ANIMAL_KEYS[this.state.index]) {
+        if (newAnimalIndex === this.state.index) {
             colorButton = 'yellow'
         }
         return(
             <button 
-                    key={newAnimal} 
-                    onClick={()=> this.setState({animal: newAnimal})} 
+                    key={newAnimalIndex} 
+                    onClick={()=> this.setState({index: newAnimalIndex})} 
                     style={{background: colorButton}} > 
                 {newAnimal}
             </button>
         )
-      }
+    }
   
     constructor() {
         super()
