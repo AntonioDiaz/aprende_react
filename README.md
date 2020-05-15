@@ -817,11 +817,7 @@ class Article extends Component {
     * Eliminamos listener
     * Eliminamos referencias al DOM
 
-[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)
-
-![compiler](docs/ciclo_vida.png)(https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)  
-
-[![](https://mermaid.ink/img/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)]()
+![](docs/ciclo_vida.png)(https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)  
 
 ### El Constructor
 * Ciclo de montaje
