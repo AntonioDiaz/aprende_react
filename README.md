@@ -43,6 +43,16 @@
     - [Render](#render)
     - [ComponentDidMount](#componentdidmount)
     - [Fetch API](#fetch-api)
+    - [ComponentWillReceiveProps](#componentwillreceiveprops)
+    - [Refactor de ComponentWillReceiveProps](#refactor-de-componentwillreceiveprops)
+    - [ShouldComponentUpdate](#shouldcomponentupdate)
+    - [ShouldComponentUpdate](#shouldcomponentupdate)
+    - [ShouldComponentUpdate con Pure Components](#shouldcomponentupdate-con-pure-components)
+    - [ComponentWillUpdate](#componentwillupdate)
+    - [ComponentWillUpdate](#componentwillupdate)
+    - [ComponentDidUpdate](#componentdidupdate)
+    - [ComponentDidUnmount](#componentdidunmount)
+    - [ComponentDidCatch](#componentdidcatch)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -807,7 +817,11 @@ class Article extends Component {
     * Eliminamos listener
     * Eliminamos referencias al DOM
 
-[![](https://mermaid.ink/img/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)
+[![Foo](http://www.google.com.au/images/nav_logo7.png)](http://google.com.au/)
+
+![compiler](docs/ciclo_vida.png)(https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)  
+
+[![](https://mermaid.ink/img/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb25zdHJ1Y3Rvcihwcm9wcylcbiAgczI6IGNvbXBvbmVudFdpbGxNb3VudCgpXG4gIHMzOiByZW5kZXIoKVxuICBzNDogY29tcG9uZW50RGlkTW91bnQoKVxuXHRbKl0gLS0-IHMxXG4gIHMxIC0tPiBzMlxuICBzMiAtLT4gczNcbiAgczMgLS0-IHM0XG5cdHM0IC0tPiBbKl0iLCJtZXJtYWlkIjp7InRoZW1lIjoiZGVmYXVsdCJ9LCJ1cGRhdGVFZGl0b3IiOmZhbHNlfQ)]()
 
 ### El Constructor
 * Ciclo de montaje
@@ -908,6 +922,27 @@ class FetchExample extends Component {
     }
 }
 ```
+
+### ComponentWillReceiveProps
+
+### Refactor de ComponentWillReceiveProps
+
+### ShouldComponentUpdate
+
+### ShouldComponentUpdate
+
+### ShouldComponentUpdate con Pure Components
+
+### ComponentWillUpdate
+
+### ComponentWillUpdate
+
+### ComponentDidUpdate
+
+### ComponentDidUnmount
+
+### ComponentDidCatch
+
 
 ## Buenas Practicas
 
