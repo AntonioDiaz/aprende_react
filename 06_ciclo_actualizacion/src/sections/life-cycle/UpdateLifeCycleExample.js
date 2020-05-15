@@ -7,22 +7,32 @@ const ANIMAL_IMAGES = {
     whale: 'https://raw.githubusercontent.com/AntonioDiaz/aprende_react/master/docs/whale.jpg'
 }
 
-class AnimalImage extends Component {
-    state = { src: ANIMAL_IMAGES[this.props.animal] }
+const ANIMAL_KEYS = Object.keys(ANIMAL_IMAGES)
 
+class AnimalImage extends Component {
+    state = { 
+        animalName: ANIMAL_KEYS[this.props.animalIndex],
+        animalUrl: ANIMAL_IMAGES[ANIMAL_KEYS[this.props.animalIndex]]
+    }
     //se ejecuta siempre que llegan nuevas props (que pueden ser igual que las propiedades que teniamos).
     componentWillReceiveProps(nextProps) {
-        this.setState({src: ANIMAL_IMAGES[nextProps.animal]})
+        console.log('nextProps -> ' + JSON.stringify(nextProps));
+        this.setState({
+            animalName: ANIMAL_KEYS[nextProps.animalIndex],
+            animalUrl: ANIMAL_IMAGES[ANIMAL_KEYS[nextProps.animalIndex]]
+        })
+        console.log('state name' + this.state.animalName);
+        console.log('state url' + this.state.animalUrl);
     }
 
     render() {
-        console.log('render....' + this.props.animal);
+        console.log('render....' + this.props.animalIndex);
         return (
             <div>
-                <p>Selected {this.props.animal}</p>
+                <p>Selected {this.state.animalName}</p>
                 <img 
-                    alt={this.props.animal}
-                    src={this.state.src}
+                    alt={this.state.animalName}
+                    src={this.state.animalUrl}
                     width='250'/>
             </div>
         )
@@ -30,42 +40,47 @@ class AnimalImage extends Component {
 }
 
 AnimalImage.prototypes = {
-    animal: PropTypes.oneOf(['dolphin', 'shark', 'whale'])
-}
-
-AnimalImage.defaultProps = {
-    animal: 'dolphin'
+    animal: PropTypes.oneOf(ANIMAL_KEYS)
 }
 
 class UpdateLifeCycleExample extends Component {
-    state = {animal: 'dolphin', index: 3}
-    indexToAnimal (index) {
-        switch (index % 3) {
-            case 0: return 'dolphin'
-            case 1: return 'shark'
-            case 2: return 'whale'
-            default: return 'dolphin'
-        }
+    state = {index: 0}
+
+    indexToAnimal = (myIndex) => {
+        return ANIMAL_KEYS[myIndex % ANIMAL_KEYS.length]
     }
 
+    renderAnimalButton = (newAnimal) => {
+        let colorButton = '';
+        if (newAnimal === ANIMAL_KEYS[this.state.index]) {
+            colorButton = 'yellow'
+        }
+        return(
+            <button 
+                    key={newAnimal} 
+                    onClick={()=> this.setState({animal: newAnimal})} 
+                    style={{background: colorButton}} > 
+                {newAnimal}
+            </button>
+        )
+      }
+  
     constructor() {
         super()
         setInterval(() => {
-            let newIndex = this.state.index + 1;
-            let newAnimal = this.indexToAnimal(newIndex)
-            this.setState({animal: newAnimal, index: this.state.index + 1})
-          }, 3000)
+            let newIndex = (this.state.index + 1) % ANIMAL_KEYS.length;
+            this.setState({index: newIndex})
+          }, 5000)
     }
     render() {
         return (
             <div>
                 <h4>Update cycle, ComponentWillReceiveProps</h4>
-                <AnimalImage animal={this.state.animal}></AnimalImage>
+                {ANIMAL_KEYS.map(this.renderAnimalButton)}
+                <AnimalImage animalIndex={this.state.index}></AnimalImage>
             </div>
         )
     }
 }
-
-
 
 export default UpdateLifeCycleExample
