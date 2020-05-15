@@ -43,6 +43,7 @@
     - [Render](#render)
     - [ComponentDidMount](#componentdidmount)
     - [Fetch API](#fetch-api)
+- [Ciclo de actualización](#ciclo-de-actualizaci%C3%B3n)
     - [ComponentWillReceiveProps](#componentwillreceiveprops)
     - [Refactor de ComponentWillReceiveProps](#refactor-de-componentwillreceiveprops)
     - [ShouldComponentUpdate](#shouldcomponentupdate)
@@ -919,12 +920,26 @@ class FetchExample extends Component {
 }
 ```
 
-### ComponentWillReceiveProps
-* Ciclo de actualización  
+## Ciclo de actualización  
+* Esta siempre en ejecución desde que se monta el componente y hasta que se desmonta.
 
 [![](https://mermaid.ink/img/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb21wb25lbnRXaWxsUmVjZWl2ZVByb3BzKHByb3BzKVxuICBzMjogc2hvdWxkQ29tcG9uZW50VXBkYXRlKG5leHRQcm9wcywgbmV4dFN0YXRlKVxuICBzMzogY29tcG9uZW50V2lsbFVwZGF0ZShuZXh0UHJvcHMsIG5leHRTdGF0ZSlcbiAgczQ6IHJlbmRlcigpICBcbiAgczU6IGNvbXBvbmVudERpZFVwZGF0ZShwcmV2UHJvcHMsIHByZXZTdGF0ZSlcblx0WypdIC0tPiBzMVxuICBzMSAtLT4gczJcbiAgczIgLS0-IHMzXG4gIHMzIC0tPiBzNFxuXHRzNCAtLT4gczVcbiAgczUgLS0-IFsqXSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)](https://mermaid-js.github.io/mermaid-live-editor/#/edit/eyJjb2RlIjoic3RhdGVEaWFncmFtXG4gIHMxOiBjb21wb25lbnRXaWxsUmVjZWl2ZVByb3BzKHByb3BzKVxuICBzMjogc2hvdWxkQ29tcG9uZW50VXBkYXRlKG5leHRQcm9wcywgbmV4dFN0YXRlKVxuICBzMzogY29tcG9uZW50V2lsbFVwZGF0ZShuZXh0UHJvcHMsIG5leHRTdGF0ZSlcbiAgczQ6IHJlbmRlcigpICBcbiAgczU6IGNvbXBvbmVudERpZFVwZGF0ZShwcmV2UHJvcHMsIHByZXZTdGF0ZSlcblx0WypdIC0tPiBzMVxuICBzMSAtLT4gczJcbiAgczIgLS0-IHMzXG4gIHMzIC0tPiBzNFxuXHRzNCAtLT4gczVcbiAgczUgLS0-IFsqXSIsIm1lcm1haWQiOnsidGhlbWUiOiJkZWZhdWx0In0sInVwZGF0ZUVkaXRvciI6ZmFsc2V9)
 
+### ComponentWillReceiveProps
+* Se ejecuta sólo cuando el componente va a recibir nuevas props (no cuando cambia el estado).
+* Útil cuando se usan las props para formar el state del componente.
+* Se puede usar el __setState__ y a veces provoca otro render.
+
+* Se ejecuta cuando nuestro componente:
+  * Va a recibir nuevas props.
+  * Va a actualizar su state.
+* Determina si debe ejecutar el render
+* Actualiza el contenido del componente.
+
+
 ### Refactor de ComponentWillReceiveProps
+
+
 
 ### ShouldComponentUpdate
 
