@@ -49,7 +49,6 @@
     - [ShouldComponentUpdate](#shouldcomponentupdate)
     - [ShouldComponentUpdate con PureComponent](#shouldcomponentupdate-con-purecomponent)
     - [ComponentWillUpdate](#componentwillupdate)
-    - [ComponentWillUpdate](#componentwillupdate)
     - [ComponentDidUpdate](#componentdidupdate)
     - [ComponentDidUnmount](#componentdidunmount)
     - [ComponentDidCatch](#componentdidcatch)
@@ -1111,8 +1110,16 @@ import React, { Component, PureComponent } from 'react'
  
 
 ### ComponentWillUpdate
-
-### ComponentWillUpdate
+* Se invoca antes del render, en caso que 
+* Hay que evitar actualizar el state. 
+```js
+componentWillUpdate(nextProps, nextState) {
+    const img = document.querySelector('img')
+    img.animate(
+        [{filter: 'blur(0px)'},{filter: 'blur(2px)'}], 
+        {duration: 500, easing: 'ease'})
+}
+```
 
 ### ComponentDidUpdate
 

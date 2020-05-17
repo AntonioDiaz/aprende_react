@@ -20,6 +20,14 @@ class AnimalImage extends PureComponent {
         })
     }
 
+    componentWillUpdate(nextProps, nextState) {
+        const img = document.querySelector('img')
+        img.animate(
+            [{filter: 'blur(0px)'},{filter: 'blur(2px)'}], 
+            {duration: 500, easing: 'ease'})
+    }
+
+
     render() {
         let animalName = ANIMAL_KEYS[this.state.animalIndex]
         let animalUrl = ANIMAL_IMAGES[animalName]
