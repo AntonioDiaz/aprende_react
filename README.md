@@ -50,6 +50,7 @@
     - [ShouldComponentUpdate con PureComponent](#shouldcomponentupdate-con-purecomponent)
     - [ComponentWillUpdate](#componentwillupdate)
     - [ComponentDidUpdate](#componentdidupdate)
+- [Ciclo de desmontaje](#ciclo-de-desmontaje)
     - [ComponentDidUnmount](#componentdidunmount)
     - [ComponentDidCatch](#componentdidcatch)
 - [Buenas Practicas](#buenas-practicas)
@@ -1122,7 +1123,7 @@ componentWillUpdate(nextProps, nextState) {
 ```
 
 ### ComponentDidUpdate
-* Última fase del ciclo.
+* Última fase del ciclo de actualización.
 * Se ejecuta tras actualizar el componente.
 * Permite ejecutar funciones de librerias externas, user el nuevo DOM o hacer llamadas externas.
 ```js
@@ -1134,8 +1135,40 @@ componentDidUpdate(prevProps, prevState) {
 }
 ```
 
+## Ciclo de desmontaje
+* Se ejecuta sólo si el componente deja de renderizarse en la aplicación.
+* Solo tiene una fase.
 
 ### ComponentDidUnmount
+* Se utiliza para liberar recursos. Por ejemplo posibles suscripciones a eventos.
+* No tiene sentido llamar al setState. 
+```js
+class ComponentToUnmount extends Component {
+    state = { windowWidth: 0 }
+
+    _updateStateWithWindowWidth = () => {
+        this.setState({windowWidth: document.body.clientWidth})
+    }
+
+    componentDidMount() {
+        this._updateStateWithWindowWidth()
+         window.addEventListener('resize', this._updateStateWithWindowWidth)
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('resize', this._updateStateWithWindowWidth)
+    }
+
+    render() {
+        return (
+            <div>
+                <p>Window width: {this.state.windowWidth}</p>
+            </div>
+        )
+    }
+}
+```
+
 
 
 
