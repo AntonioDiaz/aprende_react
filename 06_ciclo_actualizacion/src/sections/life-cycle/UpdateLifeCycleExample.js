@@ -27,6 +27,13 @@ class AnimalImage extends PureComponent {
             {duration: 500, easing: 'ease'})
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        const img = document.querySelector('img')
+        img.animate(
+            [{filter: 'blur(2px)'},{filter: 'blur(1px)'}], 
+            {duration: 1500, easing: 'ease'})
+
+    }
 
     render() {
         let animalName = ANIMAL_KEYS[this.state.animalIndex]

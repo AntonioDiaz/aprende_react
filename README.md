@@ -1110,7 +1110,7 @@ import React, { Component, PureComponent } from 'react'
  
 
 ### ComponentWillUpdate
-* Se invoca antes del render, en caso que 
+* Se invoca antes del __render__, en caso que 
 * Hay que evitar actualizar el state. 
 ```js
 componentWillUpdate(nextProps, nextState) {
@@ -1122,8 +1122,22 @@ componentWillUpdate(nextProps, nextState) {
 ```
 
 ### ComponentDidUpdate
+* Última fase del ciclo.
+* Se ejecuta tras actualizar el componente.
+* Permite ejecutar funciones de librerias externas, user el nuevo DOM o hacer llamadas externas.
+```js
+componentDidUpdate(prevProps, prevState) {
+    const img = document.querySelector('img')
+    img.animate(
+        [{filter: 'blur(2px)'},{filter: 'blur(1px)'}], 
+        {duration: 1500, easing: 'ease'})
+}
+```
+
 
 ### ComponentDidUnmount
+
+
 
 ### ComponentDidCatch
 
