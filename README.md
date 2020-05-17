@@ -52,6 +52,7 @@
     - [ComponentDidUpdate](#componentdidupdate)
 - [Ciclo de desmontaje](#ciclo-de-desmontaje)
     - [ComponentDidUnmount](#componentdidunmount)
+- [Ciclo de Error](#ciclo-de-error)
     - [ComponentDidCatch](#componentdidcatch)
 - [Buenas Practicas](#buenas-practicas)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
@@ -1169,10 +1170,60 @@ class ComponentToUnmount extends Component {
 }
 ```
 
-
+## Ciclo de Error
+* Solo de ejecuta el método __ComponentDidCatch__ 
+* Captura los posibles errores de los componentes que utilicemos en nuestro componente.
+* No caputará los errores en los métodos disparados por eventos ni en el código asíncrono.
+* Si un componente tiene un error no controlado se desmontará totalmente todo el componente de la aplicación.
+* Recive dos parámetros: 
+```js
+componentDidCatch(error, info)
+```
 
 
 ### ComponentDidCatch
+* Example: 
+```js
+import React, { Component } from 'react'
+
+class ButtonThrowsException extends Component {
+    state = {throwError: false}
+    render() {
+        if (this.state.throwError) {
+            throw new Error('Error thrown by the button')
+        }
+        return (
+            <button onClick={()=>this.setState({throwError: true})}>throws exception</button>
+        )
+    }
+}
+
+class ComponentDidCatchExample extends Component {
+    state = {hasError: false, errorMsg: ''}
+    componentDidCatch(error, errorInfo) {
+        this.setState({hasError: true, errorMsg: error.toString()})        
+    }
+    render() {
+        if (this.state.hasError) {
+            return (
+                <div>
+                    ERRORACO: {this.state.errorMsg}                
+                    <br/>
+                    <button onClick={()=>this.setState({hasError: false})}>change state so render again!!</button>                    
+                </div>
+            )
+        }
+        return (
+            <div>
+                ComponentDidCatchExample
+                <br/>
+                <ButtonThrowsException></ButtonThrowsException>
+            </div>
+        )
+    }
+}
+export default ComponentDidCatchExample
+```
 
 
 ## Buenas Practicas
