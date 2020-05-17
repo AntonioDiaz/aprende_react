@@ -47,8 +47,7 @@
     - [ComponentWillReceiveProps](#componentwillreceiveprops)
     - [Refactor de ComponentWillReceiveProps](#refactor-de-componentwillreceiveprops)
     - [ShouldComponentUpdate](#shouldcomponentupdate)
-    - [ShouldComponentUpdate](#shouldcomponentupdate)
-    - [ShouldComponentUpdate con Pure Components](#shouldcomponentupdate-con-pure-components)
+    - [ShouldComponentUpdate con PureComponent](#shouldcomponentupdate-con-purecomponent)
     - [ComponentWillUpdate](#componentwillupdate)
     - [ComponentWillUpdate](#componentwillupdate)
     - [ComponentDidUpdate](#componentdidupdate)
@@ -1100,10 +1099,16 @@ shouldComponentUpdate(nextProps) {
 }
 ```
 
-
-### ShouldComponentUpdate
-
-### ShouldComponentUpdate con Pure Components
+### ShouldComponentUpdate con PureComponent
+* Realiza una comparación superficial de las props o del state.
+* Superficial: solo se puede usar cuando las props y el state sean simples.
+* Importarlo de la libreria de react.
+```js
+import React, { Component, PureComponent } from 'react'
+```
+* Extender de PureComponent en vez de Component
+* Se puede borrar el metodo ShouldComponentUpdate.
+ 
 
 ### ComponentWillUpdate
 
