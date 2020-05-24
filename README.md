@@ -54,7 +54,12 @@
     - [ComponentDidUnmount](#componentdidunmount)
 - [Ciclo de Error](#ciclo-de-error)
     - [ComponentDidCatch](#componentdidcatch)
-- [Buenas Practicas](#buenas-practicas)
+- [Buenas Prácticas](#buenas-pr%C3%A1cticas)
+    - [Composición vs herencia](#composici%C3%B3n-vs-herencia)
+    - [Componentes funcionales puros (Stateless components)](#componentes-funcionales-puros-stateless-components)
+    - [PropTypes en stateles components](#proptypes-en-stateles-components)
+    - [Patrón contenedor contenido](#patr%C3%B3n-contenedor-contenido)
+    - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
 - [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
@@ -1225,8 +1230,123 @@ class ComponentDidCatchExample extends Component {
 export default ComponentDidCatchExample
 ```
 
+## Buenas Prácticas
 
-## Buenas Practicas
+### Composición vs herencia
+#### Ejemplo herencia
+```js
+class MyButton extends Component {
+  constructor(props) {
+    super(props)
+    this.borderColor='blue'
+  }
+  render(){
+    return (
+      <button style={{borderColor: this.borderColor, display:'block'}}>
+          {this.props.label}
+      </button>
+    )
+  }
+}
+
+class MyButtonDanger extends MyButton {
+  constructor(props) {
+    super(props)
+    this.borderColor='red'
+  }
+  render(){
+    return (
+      <button style={{borderColor: this.borderColor, display:'block'}}>
+        {this.props.label}
+      </button>
+    )
+  }
+}
+
+class MyButtonWithLegend extends MyButton {
+  constructor(props) {
+    super(props)
+  }
+  render(){
+    return (
+      <div>
+        {super.render()}
+        <small>{this.props.legend}</small>
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Composición VS Herencia</h1>
+        <MyButton label='father button'></MyButton>
+        <br/>
+        <MyButtonDanger label='danger button'></MyButtonDanger>
+        <br/>
+        <MyButtonWithLegend label='legend button' legend='Clicka el boton...'></MyButtonWithLegend>
+      </div>
+    );
+  } 
+}
+```
+
+#### Ejemplo composición
+```js
+class MyButton extends Component {
+  render(){
+    return (
+      <button style={{borderColor: this.props.borderColor, display:'block'}}>
+          {this.props.label}
+      </button>
+    )
+  }
+}
+
+MyButton.defaultProps = { borderColor: 'blue'}
+
+class MyButtonDanger extends Component {
+  render(){
+    return (
+      <MyButton borderColor='red' label={this.props.label} />
+    )
+  }
+} 
+
+class MyButtonWithLegend extends Component {
+  render(){
+    return (
+      <div>
+      <MyButton label={this.props.label} borderColor={this.props.borderColor}/>
+      <small>{this.props.legend}</small>
+      </div>
+    )
+  }
+}
+
+class App extends Component {
+  render() {
+    return (
+      <div className="App">
+        <h1>Composición VS Herencia</h1>
+        <MyButton borderColor='#335EFF' label='father button'></MyButton>
+        <MyButtonDanger label='danger button'></MyButtonDanger>
+        <MyButtonWithLegend borderColor='green' label='legend button' legend='do it now' ></MyButtonWithLegend>
+      </div>
+    );
+  } 
+}
+```
+
+### Componentes funcionales puros (Stateless components)
+
+### PropTypes en stateles components
+
+### Patrón contenedor contenido
+
+### Componente Strict Mode
 
 ## PROYECTO - Buscador de peliculas online
 
