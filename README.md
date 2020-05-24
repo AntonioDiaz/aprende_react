@@ -59,6 +59,7 @@
     - [Componentes funcionales puros (Stateless components)](#componentes-funcionales-puros-stateless-components)
     - [PropTypes en stateles components](#proptypes-en-stateles-components)
     - [Patrón contenedor contenido](#patr%C3%B3n-contenedor-contenido)
+    - [Contenido o tontos o presentacionales](#contenido-o-tontos-o-presentacionales)
     - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -1385,6 +1386,24 @@ const Button = ({borderColor: 'red', label}) => (
 ```
 
 ### Patrón contenedor contenido
+* Dividir los componentes en 2 categorias
+
+#### Contenedor o listos o lógicos
+* Tiene lógica, un state.
+* Recupera los datos del servidor y hace las tranformaciones necesarias. 
+* Para adecuar los datos recibidos a las props del contenido.
+
+### Contenido o tontos o presentacionales 
+* Sólo se ocupa de representar los datos en un layout.
+* No se pueden tener llamadas externas.
+* Componentes puros.
+
+* Diagrama
+![compiler](docs/diagrama.png)  
+
+* Diagrama Bitcoin
+![compiler](docs/diagrama_bitcoin.png)  
+
 
 ### Componente Strict Mode
 
