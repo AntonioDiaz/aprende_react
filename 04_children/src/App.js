@@ -12,10 +12,7 @@ class Box extends Component {
   }
 }
 
-class Article extends Component {
-  static propTypes = {
-    author: PropTypes.string.isRequired
-  }
+class ArticleOld extends Component {
   constructor(props) {
     super(props)
   }
@@ -34,11 +31,23 @@ class Article extends Component {
   }
 }
 
-/*
-Article.PropTypes = {
-  author: PropTypes.string
+function Article(props) {
+  const {author, children, date, title} = props
+  return (
+    <section>
+      <h2>{title}</h2>
+      {author && <p><em>Escrito por {author}</em></p>}
+      <Box>{date}</Box>
+      <article>
+        {children}
+      </article>
+    </section>
+  )
 }
-*/
+
+Article.propTypes = {
+  author: PropTypes.string.isRequired
+}
 
 function App() {
   return (
@@ -48,7 +57,7 @@ function App() {
         author="Wikipedia"
         date={new Date().toLocaleDateString()}
         title="Articulo de React JS">
-          <p><strong>React</strong> (también llamada React.js o ReactJS) es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.</p>
+          <p><strong>*React</strong> (también llamada React.js o ReactJS) es una biblioteca Javascript de código abierto diseñada para crear interfaces de usuario con el objetivo de facilitar el desarrollo de aplicaciones en una sola página.</p>
       </Article> 
       <hr></hr> 
       <Article

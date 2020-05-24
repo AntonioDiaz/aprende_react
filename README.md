@@ -1341,8 +1341,48 @@ class App extends Component {
 ```
 
 ### Componentes funcionales puros (Stateless components)
+* Si un componente no tiene state (stateless) y no usa ningún método del ciclo de vida se puede convertir en una función.
+* Ejemplo con __Article__, las props ser reciben como parámetro
+```js
+function Article(props) {
+  const {author, children, date, title} = props
+  return (
+    <section>
+      <h2>{title}</h2>
+      {author && <p><em>Escrito por {author}</em></p>}
+      <Box>{date}</Box>
+      <article>
+        {children}
+      </article>
+    </section>
+  )
+}
+```
+
+* Ejemplo de __Button__
+```js
+const Button = ({borderColor, label}) => (
+  <button style={{borderColor, display: 'block'}}>
+    {label}
+  </button>
+)
+```
 
 ### PropTypes en stateles components
+* Proptypes
+```js
+Article.propTypes = {
+  author: PropTypes.string.isRequired
+}
+```
+* Default values
+```js
+const Button = ({borderColor: 'red', label}) => (
+  <button style={{borderColor, display: 'block'}}>
+    {label}
+  </button>
+)
+```
 
 ### Patrón contenedor contenido
 
