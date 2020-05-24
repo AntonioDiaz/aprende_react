@@ -1398,10 +1398,10 @@ const Button = ({borderColor: 'red', label}) => (
 * No se pueden tener llamadas externas.
 * Componentes puros.
 
-* Diagrama
+* Diagrama  
 ![compiler](docs/diagrama.png)  
 
-* Diagrama Bitcoin
+* Diagrama Bitcoin  
 ![compiler](docs/diagrama_bitcoin.png)  
 
 
