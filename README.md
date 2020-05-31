@@ -61,6 +61,17 @@
     - [Patrón contenedor contenido](#patr%C3%B3n-contenedor-contenido)
     - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
+    - [Preparando el entorno de nuestra aplicación](#preparando-el-entorno-de-nuestra-aplicaci%C3%B3n)
+    - [Creando el componente SearchFrom](#creando-el-componente-searchfrom)
+    - [Usando Fetch para obtener resultados de busqueda desde una API](#usando-fetch-para-obtener-resultados-de-busqueda-desde-una-api)
+    - [Creando componentes reutilizables y mejorando el layout](#creando-componentes-reutilizables-y-mejorando-el-layout)
+    - [Mejoras en la implementación de búsqueda](#mejoras-en-la-implementaci%C3%B3n-de-b%C3%BAsqueda)
+    - [Instroduccion al enruado en React](#instroduccion-al-enruado-en-react)
+    - [Enrutado básico](#enrutado-b%C3%A1sico)
+    - [Separando la página Home](#separando-la-p%C3%A1gina-home)
+    - [Creando una SPA con React Router](#creando-una-spa-con-react-router)
+    - [Página 404](#p%C3%A1gina-404)
+    - [Publicando con Surge](#publicando-con-surge)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
 - [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
 
@@ -1438,33 +1449,65 @@ export default BitCoinPriceContainer
 ```
 * presentational.js
 ```js
-class BitCoinPrice extends Component {
+import React from 'react';
 
-    _renderCurrencies() {
-        const { bpi } = this.props
-        const currencies = Object.keys(bpi)
-        return currencies.map (currency => 
-                <div key={currency}>
-                    1 BTC is {bpi[currency].rate} _ <span>{currency}</span>
-                </div>
-        )
-    }
-
-    render() {
-        return (
-            <div>
-                <h4>Bitcoins Price Index</h4>
-                {this._renderCurrencies()}
-            </div>
-        )
-    }
+const _renderCurrencies = (bpi) => {
+    return Object.keys(bpi).map (currency => 
+        <li key={currency}>
+            1 BTC is {bpi[currency].rate} _ <span>{currency}</span>
+        </li>
+    )
 }
+
+const BitCoinPrice = ({bpi}) => {
+    return (
+        <div>
+            <h4>Bitcoins Price Index</h4>
+            <ul>{_renderCurrencies(bpi)}</ul>
+        </div>
+    )
+}
+
 export default BitCoinPrice
 ```
 
 ### Componente Strict Mode
+* Componente Strict Mode sirve para estar seguro de que seguimos las mejores prácticas en React y que podemos actualizar a nuevas versiones de la librería.
+* Disponible desde la versión 16.3
+* Para utilizarlo hay que ir al fichero index.js de la aplicación, importarlo
+import React y envolver la aplicación dentro del tag <React.StrictMode>
+```js
+ReactDOM.render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+```
 
 ## PROYECTO - Buscador de peliculas online
+
+### Preparando el entorno de nuestra aplicación
+
+### Creando el componente SearchFrom
+
+### Usando Fetch para obtener resultados de busqueda desde una API
+
+### Creando componentes reutilizables y mejorando el layout
+
+### Mejoras en la implementación de búsqueda
+
+### Instroduccion al enruado en React
+
+### Enrutado básico
+
+### Separando la página Home
+
+### Creando una SPA con React Router
+
+### Página 404
+
+### Publicando con Surge
 
 ## Redux, gestionando el estado global de tu aplicación
 
