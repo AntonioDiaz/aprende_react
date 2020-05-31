@@ -59,7 +59,6 @@
     - [Componentes funcionales puros (Stateless components)](#componentes-funcionales-puros-stateless-components)
     - [PropTypes en stateles components](#proptypes-en-stateles-components)
     - [Patrón contenedor contenido](#patr%C3%B3n-contenedor-contenido)
-    - [Contenido o tontos o presentacionales](#contenido-o-tontos-o-presentacionales)
     - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
@@ -1393,7 +1392,7 @@ const Button = ({borderColor: 'red', label}) => (
 * Recupera los datos del servidor y hace las tranformaciones necesarias. 
 * Para adecuar los datos recibidos a las props del contenido.
 
-### Contenido o tontos o presentacionales 
+#### Contenido o tontos o presentacionales 
 * Sólo se ocupa de representar los datos en un layout.
 * No se pueden tener llamadas externas.
 * Componentes puros.
@@ -1403,6 +1402,41 @@ const Button = ({borderColor: 'red', label}) => (
 
 * Diagrama Bitcoin  
 ![compiler](docs/diagrama_bitcoin.png)  
+* index.js
+```js
+import BitCoinPriceContainer from './container-component/container'
+
+function App() {
+  return (
+    <div className="App">
+      <header className="App-header">
+        <BitCoinPriceContainer/>
+      </header>
+    </div>
+  );
+}
+```
+* container.js
+```js
+class BitCoinPriceContainer extends Component {
+    state = { bpi: {}}
+    componentDidMount() {
+        fetch('https://api.coindesk.com/v1/bpi/currentprice.json')
+            .then(res => res.json())
+            .then(data => {
+                const { bpi } = data
+                this.setState({bpi})
+            })
+    }
+    render() {
+        return (
+            <BitCoinPrice bpi={this.state.bpi}/>
+        )
+    }
+}
+export default BitCoinPriceContainer
+```
+* presentational.js
 
 
 ### Componente Strict Mode
