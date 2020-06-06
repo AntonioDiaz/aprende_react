@@ -1513,9 +1513,23 @@ function App() {
     </div>
   );
 }
-
 export default App;
 ```
+* Create Title component on path _./component/Title.js_
+```js
+import React from 'react'
+
+export const Title = ({children}) => (
+    <h1 className="title">{children}</h1>
+)
+```
+* Import and use the component:
+```js
+import {Title} from './components/Title'
+...
+
+```
+
 
 
 ### Creando el componente SearchFrom
