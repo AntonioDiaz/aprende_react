@@ -1488,6 +1488,35 @@ ReactDOM.render(
 ## PROYECTO - Buscador de peliculas online
 
 ### Preparando el entorno de nuestra aplicación
+* Create Project 
+```shell
+$>npx create-react-app 09_buscador_peliculas
+```
+* Add __Bulma__ dependences
+```shell
+$>npm install bulma --save --save-exact
+```
+* Start project
+```shell
+$>npm start
+```
+* Clean project and import Bulma:
+```js
+import React from 'react';
+import './App.css';
+import 'bulma/css/bulma.css'
+
+function App() {
+  return (
+    <div className="App">
+      Search Movies
+    </div>
+  );
+}
+
+export default App;
+```
+
 
 ### Creando el componente SearchFrom
 
