@@ -62,18 +62,6 @@
     - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
     - [Preparando el entorno de nuestra aplicación](#preparando-el-entorno-de-nuestra-aplicaci%C3%B3n)
-    - [Creando el componente SearchFrom](#creando-el-componente-searchfrom)
-    - [Usando Fetch para obtener resultados de busqueda desde una API](#usando-fetch-para-obtener-resultados-de-busqueda-desde-una-api)
-    - [Creando componentes reutilizables y mejorando el layout](#creando-componentes-reutilizables-y-mejorando-el-layout)
-    - [Mejoras en la implementación de búsqueda](#mejoras-en-la-implementaci%C3%B3n-de-b%C3%BAsqueda)
-    - [Instroduccion al enruado en React](#instroduccion-al-enruado-en-react)
-    - [Enrutado básico](#enrutado-b%C3%A1sico)
-    - [Separando la página Home](#separando-la-p%C3%A1gina-home)
-    - [Creando una SPA con React Router](#creando-una-spa-con-react-router)
-    - [Página 404](#p%C3%A1gina-404)
-    - [Publicando con Surge](#publicando-con-surge)
-- [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
-- [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
 
 <!-- /TOC -->
 
@@ -1528,11 +1516,81 @@ export const Title = ({children}) => (
 import {Title} from './components/Title'
 ...
 
+### Creando el componente SearchFrom
+* Add controller with 2 events.
+```js
+import React, {Component} from 'react'
+
+export default class SearchFrom extends Component {
+
+    state = {
+        inputMovie: ''
+    }
+
+    _handleChange = (e) => {
+        this.setState({inputMovie: e.target.value})
+    }
+
+    _handleSubmit = (e) => {
+        e.preventDefault()
+        alert (this.state.inputMovie)
+    }
+
+    render() {
+        return (
+            <form onSubmit={this._handleSubmit}>
+                <div className="field has-addons">
+                    <div className="control">
+                        <input 
+                            className="input" 
+                            onChange={this._handleChange}
+                            type="text" 
+                            placeholder="Search Movies"></input>
+                    </div>
+                    <div className="control">
+                        <button className="button is-info">Search</button>
+                    </div>
+                </div>
+            </form>
+        );
+    }
+}
+```
+* Add class to center the component on App.css
+```css
+.App {
+  padding-top: 36px;
+  text-align: center;
+}
+.SearchForm-wrapper {
+  display: flex;
+  justify-content: center;
+}
 ```
 
+* Wrapp the component with a div and add the new class to the component.
+```js
+import React from 'react';
+import {Title} from './components/Title'
+import SearchForm from './components/SearchForm.js'
 
+import './App.css';
+import 'bulma/css/bulma.css'
 
-### Creando el componente SearchFrom
+function App() {
+  return (
+    <div className="App">
+        <Title>Buscador de Pelis</Title>        
+        <div className='SearchForm-wrapper'>
+          <SearchForm></SearchForm>
+        </div>
+    </div>
+  );
+}
+
+export default App;
+```
+
 
 ### Usando Fetch para obtener resultados de busqueda desde una API
 
