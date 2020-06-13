@@ -62,6 +62,18 @@
     - [Componente Strict Mode](#componente-strict-mode)
 - [PROYECTO - Buscador de peliculas online](#proyecto---buscador-de-peliculas-online)
     - [Preparando el entorno de nuestra aplicación](#preparando-el-entorno-de-nuestra-aplicaci%C3%B3n)
+    - [Creando el componente SearchFrom](#creando-el-componente-searchfrom)
+    - [Usando Fetch para obtener resultados de busqueda desde una API](#usando-fetch-para-obtener-resultados-de-busqueda-desde-una-api)
+    - [Creando componentes reutilizables y mejorando el layout](#creando-componentes-reutilizables-y-mejorando-el-layout)
+    - [Mejoras en la implementación de búsqueda](#mejoras-en-la-implementaci%C3%B3n-de-b%C3%BAsqueda)
+    - [Instroduccion al enruado en React](#instroduccion-al-enruado-en-react)
+    - [Enrutado básico](#enrutado-b%C3%A1sico)
+    - [Separando la página Home](#separando-la-p%C3%A1gina-home)
+    - [Creando una SPA con React Router](#creando-una-spa-con-react-router)
+    - [Página 404](#p%C3%A1gina-404)
+    - [Publicando con Surge](#publicando-con-surge)
+- [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
+- [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
 
 <!-- /TOC -->
 
@@ -1476,18 +1488,22 @@ ReactDOM.render(
 ## PROYECTO - Buscador de peliculas online
 
 ### Preparando el entorno de nuestra aplicación
+
 * Create Project 
 ```shell
 $>npx create-react-app 09_buscador_peliculas
 ```
+
 * Add __Bulma__ dependences
 ```shell
 $>npm install bulma --save --save-exact
 ```
+
 * Start project
 ```shell
 $>npm start
 ```
+
 * Clean project and import Bulma:
 ```js
 import React from 'react';
@@ -1514,9 +1530,10 @@ export const Title = ({children}) => (
 * Import and use the component:
 ```js
 import {Title} from './components/Title'
-...
+```
 
 ### Creando el componente SearchFrom
+
 * Add controller with 2 events.
 ```js
 import React, {Component} from 'react'
@@ -1556,6 +1573,7 @@ export default class SearchFrom extends Component {
     }
 }
 ```
+
 * Add class to center the component on App.css
 ```css
 .App {
@@ -1591,8 +1609,95 @@ function App() {
 export default App;
 ```
 
-
 ### Usando Fetch para obtener resultados de busqueda desde una API
+OMDb API: http://omdbapi.com/
+Pedir API key
+Add constant: API_KEY = 'ee453XXX'
+* Component to access search the films:
+```js
+import React, {Component} from 'react'
+
+const API_KEY = 'ee4531xx'
+
+export default class SearchFrom extends Component {
+    state = {
+        inputMovie: ''
+    }
+    _handleChange = (e) => {
+        this.setState({inputMovie: e.target.value})
+    }
+    _handleSubmit = (e) => {
+        e.preventDefault()
+        const {inputMovie} = this.state
+        const url = `http://www.omdbapi.com/?s=${inputMovie}&apikey=${API_KEY}`
+        fetch(url)
+            .then(res => res.json())
+            .then(results => {
+                const {Search, totalResults} = results
+                this.props.onResults(Search)
+            }) 
+    }
+    render() {
+        return (
+            <form onSubmit={this._handleSubmit}>
+                <div className="field has-addons">
+                    <div className="control">
+                        <input 
+                            className="input" 
+                            onChange={this._handleChange}
+                            type="text" 
+                            placeholder="Search Movies"></input>
+                    </div>
+                    <div className="control">
+                        <button className="button is-info">Search</button>
+                    </div>
+                </div>
+            </form>
+        );
+    }
+}
+```
+
+* Showing the results:
+```js
+import React, {Component} from 'react';
+import {Title} from './components/Title'
+import SearchForm from './components/SearchForm.js'
+
+import './App.css';
+import 'bulma/css/bulma.css'
+
+class App extends Component {
+
+  state = { results: [] }
+
+  _renderResults() {
+    const {results} = this.state
+    return results.map(
+      (movie, index)=> { return <div key={index}>{movie.Title}</div>})
+  }
+
+  _handleResults = (results) => {
+    this.setState({results})
+  }
+
+  render() {
+    return (
+      <div className="App">
+          <Title>Buscador de Pelis</Title>         
+          <div className='SearchForm-wrapper'>
+            <SearchForm onResults={this._handleResults}></SearchForm>
+          </div>
+          <span>
+            {this.state.results.length === 0 ? "sin resultados" : this._renderResults()}
+          </span>
+      </div>
+    )
+  }
+}
+
+export default App;
+```
 
 ### Creando componentes reutilizables y mejorando el layout
 

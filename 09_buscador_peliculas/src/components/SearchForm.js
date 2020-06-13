@@ -1,5 +1,7 @@
 import React, {Component} from 'react'
 
+const API_KEY = 'ee453171'
+
 export default class SearchFrom extends Component {
 
     state = {
@@ -12,7 +14,14 @@ export default class SearchFrom extends Component {
 
     _handleSubmit = (e) => {
         e.preventDefault()
-        alert (this.state.inputMovie)
+        const {inputMovie} = this.state
+        const url = `http://www.omdbapi.com/?s=${inputMovie}&apikey=${API_KEY}`
+        fetch(url)
+            .then(res => res.json())
+            .then(results => {
+                const {Search, totalResults} = results
+                this.props.onResults(Search)
+            }) 
     }
 
     render() {
