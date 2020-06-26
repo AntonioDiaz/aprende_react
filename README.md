@@ -66,7 +66,7 @@
     - [Usando Fetch para obtener resultados de busqueda desde una API](#usando-fetch-para-obtener-resultados-de-busqueda-desde-una-api)
     - [Creando componentes reutilizables y mejorando el layout](#creando-componentes-reutilizables-y-mejorando-el-layout)
     - [Mejoras en la implementación de búsqueda](#mejoras-en-la-implementaci%C3%B3n-de-b%C3%BAsqueda)
-    - [Instroduccion al enruado en React](#instroduccion-al-enruado-en-react)
+    - [Introducción al enruado en React](#introducci%C3%B3n-al-enruado-en-react)
     - [Enrutado básico](#enrutado-b%C3%A1sico)
     - [Separando la página Home](#separando-la-p%C3%A1gina-home)
     - [Creando una SPA con React Router](#creando-una-spa-con-react-router)
@@ -1700,10 +1700,70 @@ export default App;
 ```
 
 ### Creando componentes reutilizables y mejorando el layout
+* Movie
+```js
+export class Movie extends Component {
+    static propTypes = {
+        title: PropTypes.string,
+        year: PropTypes.string,
+        poster: PropTypes.string
+    }
+
+    render() {
+        const {poster, title, year} = this.props
+        return (
+            <div className="card">
+                <div className="card-image">
+                    <figure className="image">
+                        <img src={poster} alt={title}></img>
+                    </figure>
+                </div>
+                <div className="card-content">
+                    <div className="media">
+                    <div className="media-content">
+                        <p className="title is-4">{title}</p>
+                        <p className="subtitle is-6">{year}</p>
+                    </div>
+                    </div>
+                </div>
+            </div>
+    )}
+}
+```
+* Movies List
+```js
+export class MoviesList extends Component {
+    static propTypes = {
+        movies: PropTypes.array
+    }
+
+    render() {
+        const {movies} = this.props
+        return (
+            <div className='MoviesList'>
+                {
+                    movies.map(movie => {
+                        return (
+                            <div key={movie.imdbID} className='MoviesList-item'>
+                                <Movie
+                                    key={movie.imdbID}
+                                    title={movie.Title}
+                                    year={movie.Year}
+                                    poster={movie.Poster}/>
+                            </div>
+                        )             
+                    })
+                }
+            </div>
+        )
+    }
+}
+```
+
 
 ### Mejoras en la implementación de búsqueda
 
-### Instroduccion al enruado en React
+### Introducción al enruado en React
 
 ### Enrutado básico
 
