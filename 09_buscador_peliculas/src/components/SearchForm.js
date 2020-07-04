@@ -18,8 +18,8 @@ export default class SearchFrom extends Component {
         const url = `http://www.omdbapi.com/?s=${inputMovie}&apikey=${API_KEY}`
         fetch(url)
             .then(res => res.json())
-            .then(results => {
-                const {Search, totalResults} = results
+             .then(results => {
+                const {Search = [], totalResults = "0"} = results
                 this.props.onResults(Search)
             }) 
     }

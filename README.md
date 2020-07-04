@@ -1762,6 +1762,23 @@ export class MoviesList extends Component {
 
 
 ### Mejoras en la implementación de búsqueda
+* Evitar mostrar "sin resultados" al cargar la página.
+  * Añadir un atributo al state y usarlo en el render para mostar o no el mensaje al inicio.
+```js
+  state = {usedSearch: false, results: [] }
+```  
+  * User search se pone a true cuando se realiza una busqueda.
+```js
+_handleResults = (results) => {
+  this.setState({results, usedSearch:true})
+}
+```
+
+* Evitar el error cuando la búsqueda no devuelve resultados.
+  * Hay que asignar un valor por defecto en el deconstructor del método _handleSubmit de SearchForm.
+  ```js
+    const {Search = [], totalResults = "0"} = results
+  ```
 
 ### Introducción al enruado en React
 
