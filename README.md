@@ -66,7 +66,6 @@
     - [Usando Fetch para obtener resultados de busqueda desde una API](#usando-fetch-para-obtener-resultados-de-busqueda-desde-una-api)
     - [Creando componentes reutilizables y mejorando el layout](#creando-componentes-reutilizables-y-mejorando-el-layout)
     - [Mejoras en la implementación de búsqueda](#mejoras-en-la-implementaci%C3%B3n-de-b%C3%BAsqueda)
-    - [Introducción al enruado en React](#introducci%C3%B3n-al-enruado-en-react)
     - [Enrutado básico](#enrutado-b%C3%A1sico)
     - [Separando la página Home](#separando-la-p%C3%A1gina-home)
     - [Creando una SPA con React Router](#creando-una-spa-con-react-router)
@@ -1776,13 +1775,113 @@ _handleResults = (results) => {
 
 * Evitar el error cuando la búsqueda no devuelve resultados.
   * Hay que asignar un valor por defecto en el deconstructor del método _handleSubmit de SearchForm.
-  ```js
-    const {Search = [], totalResults = "0"} = results
-  ```
-
-### Introducción al enruado en React
+```js
+  const {Search = [], totalResults = "0"} = results
+```
 
 ### Enrutado básico
+* En Movie.js, cambiar el div por un href, añadir el id al propTypes
+```js
+export class Movie extends Component {
+    static propTypes = {
+        id: PropTypes.string,
+        title: PropTypes.string,
+        year: PropTypes.string,
+        poster: PropTypes.string
+    }
+
+    render() {
+        const {id, poster, title, year} = this.props
+        return (
+            <a href={`?id=${id}`} className="card">
+            ...
+            </a>
+    )}
+}
+```
+* En MoviesList.js, para el atributo id a la etiqueta Movie:
+```js
+    render() {
+        const {movies} = this.props
+        return (
+            <div className='MoviesList'>
+                {
+                    movies.map(movie => {
+                        return (
+                            <div key={movie.imdbID} className='MoviesList-item'>
+                                <Movie
+                                    id={movie.imdbID}
+                                    title={movie.Title}
+                                    year={movie.Year}
+                                    poster={movie.Poster}/>
+                            </div>
+                        )             
+                    })
+                }
+            </div>
+        )
+    }
+}
+```
+
+* En App.js, si viene un parametro id pintar la etiqueta Detail
+```js
+  render() {
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+    if (hasId) {
+      return <Detail id={url.searchParams.get('id')} ></Detail>
+    }
+  }
+```
+
+* Etiqueta Detail
+```js
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+
+const API_KEY = 'ee453171'
+
+export class Detail extends Component {
+
+    static propTypes = {
+        id: PropTypes.string
+    }
+
+    state = {movie: {}}
+
+    _fetchMovie({id}) {
+        const url = `http://www.omdbapi.com/?i=${id}&apikey=${API_KEY}`
+        fetch(url)
+            .then(res => res.json())
+             .then(movie => {
+                console.log(movie)
+                this.setState({movie})
+            }) 
+    }
+
+    componentDidMount() {
+        const {id} = this.props
+        this._fetchMovie({id})
+    }
+
+ 
+    render() {
+        const {Title, Poster, Actors, Metascore, Plot} = this.state.movie
+        return ( 
+            <div>
+                <h1>{Title}</h1>
+                <img src={Poster} alt={Title}/>
+                <h3>{Actors}</h3>
+                <span>{Metascore}</span>
+                <p>{Plot}</p>
+                <button onClick={this._goBack}>Back</button>
+            </div>
+          )
+    }
+}
+```
+
 
 ### Separando la página Home
 
