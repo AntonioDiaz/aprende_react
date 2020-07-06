@@ -14,7 +14,7 @@
     - [Inmutabilidad de las props](#inmutabilidad-de-las-props)
     - [Props por defecto](#props-por-defecto)
     - [Gestion del estado en ReactJS](#gestion-del-estado-en-reactjs)
-    - [Actualizar estado mediante setState()](#actualizar-estado-mediante-setstate)
+    - [Actualizar estado mediante setState](#actualizar-estado-mediante-setstate)
     - [Propagación del estado](#propagaci%C3%B3n-del-estado)
     - [Inicialización del estado mediante Props](#inicializaci%C3%B3n-del-estado-mediante-props)
 - [Renderizado condicional y listas](#renderizado-condicional-y-listas)
@@ -56,7 +56,7 @@
     - [ComponentDidCatch](#componentdidcatch)
 - [Buenas Prácticas](#buenas-pr%C3%A1cticas)
     - [Composición vs herencia](#composici%C3%B3n-vs-herencia)
-    - [Componentes funcionales puros (Stateless components)](#componentes-funcionales-puros-stateless-components)
+    - [Componentes funcionales puros Stateless components](#componentes-funcionales-puros-stateless-components)
     - [PropTypes en stateles components](#proptypes-en-stateles-components)
     - [Patrón contenedor contenido](#patr%C3%B3n-contenedor-contenido)
     - [Componente Strict Mode](#componente-strict-mode)
@@ -137,12 +137,12 @@ export default App;
   * Cada componente encapsula su estado.
   * Codigo mas reusable, mantenible y pequeño.
 * Programación reactiva: cambio de estado renderiza el componente.
-* Virtual DOM: genera una copia del árbol de elementos del navegador para solo hacer los mínimos cambios necesarions para reglejar el estado de nuestros componentes.
+* Virtual DOM: genera una copia del árbol de elementos del navegador para solo hacer los mínimos cambios necesarions para reflejar el estado de nuestros componentes.
 * Eventos sintéticos:
-  * Abstraciond de los eventos nativos de los navegadores
+  * Abstración de los eventos nativos de los navegadores
   * Compatibilidad cross browsing sin necesidad de más librerías.
-  * Soporte para todos los eventos 1ue puedas necesitar desde click y double click, hasta eventos móviles como touchstaert y touchend.
-* Server Side Rendering: el mismo codigo que se renderiza en el cliente lo tenemos en el servidor.
+  * Soporte para todos los eventos que puedas necesitar desde click y double click, hasta eventos móviles como touchstaert y touchend.
+* __Server Side Rendering__ el mismo código que se renderiza en el cliente lo tenemos en el servidor.
 
 ### Introdución a JSX
 Es una sintaxis para generar componentes en React
@@ -547,7 +547,7 @@ class App extends Component {
 
 ### Eventos sportados
 * Hay que enlazar el evento con el contexto, esto se puede hacer:
-  * Añadiendo al constuctor del componente la insturccion de enlazar:
+  * Añadiendo al constuctor del componente la instrucción de enlazar
   > this.handleMouseMove = this.handleMouseMove.bind(this)
   * Usando una **arrow function** al declarar la funcion, ya que las arrow functions enlazan siempre el contexto desde el que se declaran.
   
@@ -655,7 +655,7 @@ export default class Forms extends Component {
                     <p>
                         <label htmlFor='name' >Nombre</label> 
                         <input 
-                            i d="name" 
+                            id="name" 
                             placeholder="pon tu nombre"
                             ref={i => this.inputName = i}/>
                     </p>
