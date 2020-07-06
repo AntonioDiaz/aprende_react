@@ -1884,8 +1884,108 @@ export class Detail extends Component {
 
 
 ### Separando la página Home
+* En App.js, checkear si hay que pintar el formulario o el detalle.
+```js
+class App extends Component {
+  render() {
+    const url = new URL(document.location)
+    const page = url.searchParams.has('id')
+      ? <Detail id={url.searchParams.get('id')} ></Detail>
+      : <HomePage></HomePage>
+    return page
+  }
+}
+```
+
+* Crear el fichero Home.js, que renderiza el formulario y los resultados de las busquedas.
+```js
+export class HomePage extends Component {
+
+    state = {usedSearch: false, results: [] }
+
+    _handleResults = (results) => {
+      this.setState({results, usedSearch:true})
+    }
+  
+    _renderResults = () => {
+      return this.state.results.length === 0 
+          ? <p>No results 😢</p> 
+          : <MoviesList movies={this.state.results}> </MoviesList>
+    }
+  
+    render() {
+        return(
+            <div className="App">
+                <Title>Buscador de Pelis</Title>         
+                <div className='SearchForm-wrapper'>
+                    <SearchForm onResults={this._handleResults}></SearchForm>
+                </div>
+                <span>  
+                    { this.state.usedSearch ? this._renderResults() : <small>Use the form to search movies</small> } 
+                </span>
+            </div>
+        )
+    }
+}
+```
 
 ### Creando una SPA con React Router
+* Importar la libreria react-router: https://reactrouter.com/
+* En index.js importar el component BrowserRouter y recubrir con él la etiqueta
+```js
+import {BrowserRouter} from 'react-router-dom'
+
+ReactDOM.render(
+  <BrowserRouter>
+      <App />
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+```
+
+* En App.js definir las rutas:
+```js
+import {Switch, Route} from 'react-router-dom';
+
+class App extends Component {
+  render() {
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={HomePage} ></Route>
+          <Route path='/detail/:id' component={Detail}></Route>
+        </Switch>
+      </div>
+    )
+  }
+}
+```
+
+* En Detail.js se obtiene el id
+```
+static propTypes = {
+    match: PropTypes.shape({
+        params: PropTypes.object,
+        isExact: PropTypes.bool,
+        path: PropTypes.string, 
+        url: PropTypes.string
+    })
+}
+
+componentDidMount() {
+    console.log(this.props)
+    const {id} = this.props.match.params
+    this._fetchMovie({id})
+}
+```
+
+* En Movie.js hay que cambiar el enlace <a href> por <Link>
+```js
+<Link to={`/detail/${id}`} className="card"></Link>
+```
 
 ### Página 404
 
