@@ -506,7 +506,7 @@ class ListaObjetos extends Component {
 * https://github.com/facebook/react
 * https://www.fotocasa.es/es/
 
-## Eventos y Formularios
+## Eventos
 * https://github.com/AntonioDiaz/aprende_react/tree/master/02_eventos
 * Example  
 ![example](docs/events.png) 
@@ -585,8 +585,7 @@ class App extends Component {
   }
 }
 ```
-
-### Formularios en React
+## Formularios
 * https://github.com/AntonioDiaz/aprende_react/tree/master/03_formularios
 * Example  
 ![example](docs/forms.png) 
