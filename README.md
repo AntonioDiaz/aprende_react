@@ -129,6 +129,9 @@ export default App;
 ```
 
 ## Conceptos básicos
+* https://github.com/AntonioDiaz/aprende_react/tree/master/01_my_app
+* Example  
+![example](docs/init_app.png) 
 
 ### Introducción sobre los conceptos básicos de React
 * Declarativo: indicamos qué y cómo.
