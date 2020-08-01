@@ -23,11 +23,11 @@
     - [Trabajando con listas](#trabajando-con-listas)
     - [Listas de objetos](#listas-de-objetos)
 - [React Developer Tools](#react-developer-tools)
-- [Eventos y Formularios](#eventos-y-formularios)
+- [Eventos](#eventos)
     - [El evento onClick](#el-evento-onclick)
     - [Eventos sintéticos](#eventos-sint%C3%A9ticos)
     - [Eventos sportados](#eventos-sportados)
-    - [Formularios en React](#formularios-en-react)
+- [Formularios](#formularios)
     - [Particularidades del atributo For](#particularidades-del-atributo-for)
     - [Entendiendo las Refs](#entendiendo-las-refs)
     - [El evento onSubmit](#el-evento-onsubmit)
@@ -500,7 +500,6 @@ class ListaObjetos extends Component {
   }
 }
 ```
-
 
 ## React Developer Tools
 * https://github.com/facebook/react
