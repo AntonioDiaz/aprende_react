@@ -5,7 +5,7 @@
 - [Introducción del curso](#introducci%C3%B3n-del-curso)
 - [Configuracion del entorno](#configuracion-del-entorno)
     - [Linter](#linter)
-- [Conceptos basicos](#conceptos-basicos)
+- [Conceptos básicos](#conceptos-b%C3%A1sicos)
     - [Introducción sobre los conceptos básicos de React](#introducci%C3%B3n-sobre-los-conceptos-b%C3%A1sicos-de-react)
     - [Introdución a JSX](#introduci%C3%B3n-a-jsx)
     - [Componentes en ReactJS](#componentes-en-reactjs)
@@ -128,17 +128,17 @@ export default App;
 }
 ```
 
-## Conceptos basicos
+## Conceptos básicos
 
 ### Introducción sobre los conceptos básicos de React
-* Declarativo: indicamos qué y como.
+* Declarativo: indicamos qué y cómo.
 * Basado en componentes:
   * Partes mas pequeñas de la interfaz.
   * Cada componente encapsula su estado.
-  * Codigo mas reusable, mantenible y pequeño.
-* Programación reactiva: cambio de estado renderiza el componente.
-* Virtual DOM: genera una copia del árbol de elementos del navegador para solo hacer los mínimos cambios necesarions para reflejar el estado de nuestros componentes.
-* Eventos sintéticos:
+  * Código más reusable, mantenible y pequeño.
+* __Programación reactiva__: cambio de estado renderiza el componente.
+* Virtual DOM: genera una copia del árbol de elementos del navegador para solo hacer los mínimos cambios necesarios para reflejar el estado de nuestros componentes.
+* __Eventos sintéticos__
   * Abstración de los eventos nativos de los navegadores
   * Compatibilidad cross browsing sin necesidad de más librerías.
   * Soporte para todos los eventos que puedas necesitar desde click y double click, hasta eventos móviles como touchstaert y touchend.
@@ -158,7 +158,7 @@ Se convierte en:
 var element = React.createElement("h1", null, "Hello, world");
 ```
 
-#### Ejemplo 02: expresion
+#### Ejemplo 02: expresión
 ```jsx
 const element = <h1>{2 + 2}</h1>
 ```
@@ -203,20 +203,20 @@ var element = React.createElement("div", null,
 ```
 
 ### Componentes en ReactJS
-
-#### Componente como Function
+Hay 3 formas de crear componentes: como funcion, como arrow function y como clase que hereda de Component.
+* Componente como funcion
 ```js
 function Hello(props) {
   return <h2>{props.title}</h2>
 }
 ```
 
-#### Componente como Arrow Function
+* Componente como Arrow Function
 ```js
 const HelloArrow = (props) => <h2>{props.title}</h2>
 ```
 
-#### Componente como clase que hereda de Component
+* Componente como clase que hereda de __Component__
 ```js
 class HelloComponent extends Component {
   render() {
@@ -224,6 +224,7 @@ class HelloComponent extends Component {
   }
 }
 ```
+
 * Usando los componentes
 ```html
 function App() {
@@ -243,6 +244,16 @@ export default App;
 ### Entendiendo las props
 Pasando arrays y objetos como props
 ```js
+<MyComponent 
+  arrayOfProps={[3,6,9]}
+  person={{name:'Atanasio', age:43}}
+  isActivated={false}
+  multiply={(n) => n * 4}
+  number={33} 
+  text="Titulo" ></MyComponent>
+```
+
+```js
 class MyComponent extends Component {
   render() {
     const isActivated = this.props.isActivated ? 'on' : 'off'
@@ -260,19 +271,15 @@ class MyComponent extends Component {
 }
 ```
 
-```js
-<MyComponent 
-  arrayOfProps={[3,6,9]}
-  person={{name:'Atanasio', age:43}}
-  isActivated={false}
-  multiply={(n) => n * 4}
-  number={33} 
-  text="Titulo" ></MyComponent>
-```
-
 ### Funciones y elementos como props
 
 #### Funcion para multiplicar
+```js
+<MyComponent 
+  arrayOfProps={[3,6,9]}
+  multiply={(n) => n*4}></MyComponent>
+```
+
 ```js
 class MyComponent extends Component {
   render() {
@@ -286,18 +293,12 @@ class MyComponent extends Component {
 }
 ```
 
-```js
-<MyComponent 
-  arrayOfProps={[3,6,9]}
-  multiply={(n) => n*4}></MyComponent>
-```
-
 #### Patrón deconstruccion
 ```js
     const {isActivated, arrayOfProps, person, multiply} = this.props
 ```
- #### Renderizar components dentro de componentes
 
+ #### Renderizar components dentro de componentes
 ```js
 class MyComponent extends Component {
   render() {
@@ -315,7 +316,6 @@ class MyComponent extends Component {
 <MyComponent 
   title={<h1>vamos ahi!</h1>}></MyComponent>
 ```
- 
 
 ### Inmutabilidad de las props
 * No se pueden modificar las propiedades.
@@ -353,7 +353,7 @@ class Contador extends Component {
 ```
 
 ### Actualizar estado mediante setState()
-* React es declarativo y reactivo
+* React es declarativo y reactivo, al cambiar el estado se pinta el component.
 ```js
 class Contador extends Component {
   constructor() {
@@ -581,7 +581,10 @@ class App extends Component {
 ```
 
 ### Formularios en React
-* Usar el componente formulario desde app.js:
+* Example
+![example](docs/forms.png) 
+
+* Usar el componente formulario desde app.js
 ```js
 import Forms from './sections/forms';
 
@@ -594,7 +597,7 @@ function App() {
 }
 
 ```
-* Crear componente formulario:
+* Crear componente formulario
 ```js
 import React, {Component} from 'react'
 
@@ -629,13 +632,13 @@ export default class Forms extends Component {
 ```
 
 ### Particularidades del atributo For
-* For the html pasa a ser __htmlFor__ en react:
+* For the html pasa a ser __htmlFor__ en react
 ```js
 <label htmlFor='name' >Nombre</label> 
 ```
 
 ### Entendiendo las Refs
-* Ref: para recupera la referencia de un objeto en el arbol DOM.
+* Ref: recupera la referencia de un objeto en el arbol DOM.
 * No se utiliza en formularios.
 * Se utiliza para integrar librerias externas.
 ```js
@@ -691,8 +694,6 @@ export default class Forms extends Component {
         console.log(this.state)
     }
     handleChange = (e) => {
-        console.log("handleChange")
-        console.log(e.target.checked)
         this.setState({inputTerms: e.target.checked})
     }
     render() {
@@ -725,7 +726,7 @@ export default class Forms extends Component {
                                 onChange={this.handleChange} 
                                 type="checkbox"
                                 checked={this.state.inputTerms}/>
-                            Vender alma a belcebú
+                            Aceptar condiciones
                         </label>
                     </p>
                     <button onClick={this.handleClick}>Enviar</button>

@@ -50,7 +50,7 @@ export default class Forms extends Component {
                                 onChange={this.handleChange} 
                                 type="checkbox"
                                 checked={this.state.inputTerms}/>
-                            Vender alma a belcebú
+                            Aceptar las condiciones
                         </label>
                     </p>
                     <button onClick={this.handleClick}>Enviar</button>
