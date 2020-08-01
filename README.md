@@ -738,6 +738,9 @@ export default class Forms extends Component {
 ```
 
 ## Children y PropTypes
+* https://github.com/AntonioDiaz/aprende_react/tree/master/04_children
+* Example  
+![example](docs/children.png) 
 
 ### La prop especial Children
 * Se utiliza para layouts reutilizables.

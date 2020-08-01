@@ -36,3 +36,10 @@
     transform: rotate(360deg);
   }
 }
+
+.Section {
+  background: rgb(196, 241, 255);
+  margin: 30px; 
+  padding: 10px;  
+  border-radius: 15px;
+}

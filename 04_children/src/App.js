@@ -34,7 +34,7 @@ class ArticleOld extends Component {
 function Article(props) {
   const {author, children, date, title} = props
   return (
-    <section>
+    <section className="Section">
       <h2>{title}</h2>
       {author && <p><em>Escrito por {author}</em></p>}
       <Box>{date}</Box>
