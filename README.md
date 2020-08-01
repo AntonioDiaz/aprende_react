@@ -581,7 +581,8 @@ class App extends Component {
 ```
 
 ### Formularios en React
-* Example
+* https://github.com/AntonioDiaz/aprende_react/tree/master/03_formularios
+* Example  
 ![example](docs/forms.png) 
 
 * Usar el componente formulario desde app.js
@@ -625,7 +626,6 @@ export default class Forms extends Component {
                     <button onClick={this.handleClick}>Enviar</button>
                 </form>
             </div>
-
         )
     }
 }
