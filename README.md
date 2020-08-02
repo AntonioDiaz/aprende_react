@@ -826,7 +826,7 @@ class Article extends Component {
 ## Ciclo de Vida de los Componentes
 
 ### Fases
-* __Ciclo de vida__: fases de ejecucion por las que pasa un componente de React.
+* __Ciclo de vida__: fases de ejecución por las que pasa un componente de React.
 * Hay 3 fases:
   * __Montaje__
     * Se ejecuta siempre y solo lo hace una vez
