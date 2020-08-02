@@ -39,7 +39,7 @@
 - [Ciclo de Vida de los Componentes](#ciclo-de-vida-de-los-componentes)
     - [Fases](#fases)
     - [El Constructor](#el-constructor)
-    - [ComponentwillMount](#componentwillmount)
+    - [ComponentWillMount](#componentwillmount)
     - [Render](#render)
     - [ComponentDidMount](#componentdidmount)
     - [Fetch API](#fetch-api)
@@ -873,11 +873,11 @@ handleClick = () => {
 }
 ```
 
-### ComponentwillMount
+### ComponentWillMount
 * Se ejecuta una vez
 * Se invoca antes de montar el componente y antes del render
 * Todavía no tenemos el componente disponible en el DOM
-* Se recomienda usar el constructor en su lugar
+* **Se recomienda usar el constructor en su lugar**
 * Se puede usar setState y no provoca otro render
 
 ### Render
@@ -885,7 +885,7 @@ handleClick = () => {
 * Retorna los elementos que queremos mostrar en la interfaz
 * __No se debe llamar al setState, provocaría un loop infinito__
 * Se debe encargar de transformar los states y las props en una representacion visual en la aplicación
-* Evitar operaciones y transormaciones ya que penaliza el rendimiento de la aplicación 
+* Evitar operaciones y tranformaciones ya que penaliza el rendimiento de la aplicación 
 * Cuando devuelve null no reneriza nada 
 * __Renderaizado condicional__ renderiza dependiendo del valor de alguna propiedad
 * __Fragmentos__ se puede devolver una lista, y se van a renderizar todos los elementos, __hay que añadir una KEY__
