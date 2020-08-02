@@ -1203,7 +1203,6 @@ class ComponentToUnmount extends Component {
 componentDidCatch(error, info)
 ```
 
-
 ### ComponentDidCatch
 * Example: 
 ```js
@@ -1249,6 +1248,10 @@ export default ComponentDidCatchExample
 ```
 
 ## Buenas Prácticas
+* https://github.com/AntonioDiaz/aprende_react/tree/master/07_buenas_practicas
+* Example:  
+![example](docs/buenas_practicas_01.png)
+
 
 ### Composición vs herencia
 #### Ejemplo herencia
