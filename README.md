@@ -824,6 +824,9 @@ class Article extends Component {
 ```
 
 ## Ciclo de Vida de los Componentes
+* https://github.com/AntonioDiaz/aprende_react/tree/master/05_ciclo_vida
+* Example:  
+![example](docs/ciclo_vida.png)
 
 ### Fases
 * __Ciclo de vida__: fases de ejecución por las que pasa un componente de React.
