@@ -1406,6 +1406,11 @@ const Button = ({borderColor: 'red', label}) => (
 ```
 
 ### Patrón contenedor contenido
+* https://github.com/AntonioDiaz/aprende_react/tree/master/08_patron_contenedor_contenido
+* Example:  
+![example](docs/patron_contenedor_contenido.png)
+
+
 * Dividir los componentes en 2 categorias
 
 #### Contenedor o listos o lógicos
