@@ -21,6 +21,7 @@ class AnimalImage extends PureComponent {
     }
 
     componentWillUpdate(nextProps, nextState) {
+        console.log("");
         const img = document.querySelector('img')
         img.animate(
             [{filter: 'blur(0px)'},{filter: 'blur(2px)'}], 
@@ -70,6 +71,7 @@ class UpdateLifeCycleExample extends Component {
         }
         return(
             <button 
+                    className="carrusel"
                     key={newAnimalIndex} 
                     onClick={()=> this.setState({index: newAnimalIndex})} 
                     style={{background: colorButton}} > 
