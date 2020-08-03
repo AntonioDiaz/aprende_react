@@ -1508,6 +1508,12 @@ ReactDOM.render(
 ```
 
 ## PROYECTO - Buscador de peliculas online
+* https://github.com/AntonioDiaz/aprende_react/tree/master/09_buscador_peliculas
+* Example:  
+![example](docs/movies_01.png)
+![example](docs/movies_02.png)
+![example](docs/movies_03.png)
+
 
 ### Preparando el entorno de nuestra aplicación
 
@@ -1541,6 +1547,7 @@ function App() {
 }
 export default App;
 ```
+
 * Create Title component on path _./component/Title.js_
 ```js
 import React from 'react'
@@ -1549,7 +1556,8 @@ export const Title = ({children}) => (
     <h1 className="title">{children}</h1>
 )
 ```
-* Import and use the component:
+
+* Import and use the component
 ```js
 import {Title} from './components/Title'
 ```
