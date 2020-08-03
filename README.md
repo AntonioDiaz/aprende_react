@@ -2016,6 +2016,53 @@ componentDidMount() {
 ```
 
 ### Página 404
+* Crea la pagina NotFound.js
+```js
+import React from 'react'
+import ButtonBackToHome from '../components/ButtonBackToHome'
+
+export const NotFound = () => (
+    <div>
+        <h2 className='title'>404 - No existe la página</h2>
+        <ButtonBackToHome></ButtonBackToHome>   
+    </div>
+)
+```
+
+* Crear el componente ButtonBackToHome.js
+```js
+import React, { Component } from 'react'
+import { Link } from 'react-router-dom'
+
+export default class ButtonBackToHome extends Component {
+    render() {
+        return (                
+        <Link 
+            className='button is-info'
+            to="/">
+                volver a la portada
+        </Link>      
+        )
+    }
+}
+```
+
+* Añadir el redireccionamiento por defecto a la pagina NotFound.js
+```js
+  render() {
+    const url = new URL(document.location)
+    const hasId = url.searchParams.has('id')
+    return (
+      <div className="App">
+        <Switch>
+          <Route exact path='/' component={HomePage} ></Route>
+          <Route path='/detail/:id' component={Detail}></Route>
+          <Route component={NotFound}></Route>
+        </Switch>
+      </div>
+    )
+  }
+```
 
 ### Publicando con Surge
 
