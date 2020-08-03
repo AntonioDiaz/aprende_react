@@ -1510,13 +1510,11 @@ ReactDOM.render(
 ## PROYECTO - Buscador de peliculas online
 * https://github.com/AntonioDiaz/aprende_react/tree/master/09_buscador_peliculas
 * Example:  
-![example](docs/movies_01.png)
-![example](docs/movies_02.png)
-![example](docs/movies_03.png)
-
+<img src="docs/movies_01.png" width="300">  
+<img src="docs/movies_02.png" width="400">  
+<img src="docs/movies_03.png" width="400">
 
 ### Preparando el entorno de nuestra aplicación
-
 * Create Project 
 ```shell
 $>npx create-react-app 09_buscador_peliculas
@@ -1800,7 +1798,7 @@ export class MoviesList extends Component {
   * User search se pone a true cuando se realiza una busqueda.
 ```js
 _handleResults = (results) => {
-  this.setState({results, usedSearch:true})
+  this.setState({usedSearch:true, results})
 }
 ```
 
@@ -1830,7 +1828,7 @@ export class Movie extends Component {
     )}
 }
 ```
-* En MoviesList.js, para el atributo id a la etiqueta Movie:
+* En MoviesList.js, para el atributo id a la etiqueta Movie
 ```js
     render() {
         const {movies} = this.props
@@ -1855,7 +1853,7 @@ export class Movie extends Component {
 }
 ```
 
-* En App.js, si viene un parametro id pintar la etiqueta Detail
+* En App.js, si viene un parámetro "id" pintar la etiqueta Detail
 ```js
   render() {
     const url = new URL(document.location)
@@ -1913,7 +1911,6 @@ export class Detail extends Component {
 }
 ```
 
-
 ### Separando la página Home
 * En App.js, checkear si hay que pintar el formulario o el detalle.
 ```js
@@ -1961,7 +1958,7 @@ export class HomePage extends Component {
 ```
 
 ### Creando una SPA con React Router
-* Importar la libreria react-router: https://reactrouter.com/
+* Importar la libreria __react-router__: https://reactrouter.com/
 * En index.js importar el component BrowserRouter y recubrir con él la etiqueta
 ```js
 import {BrowserRouter} from 'react-router-dom'
@@ -1974,7 +1971,7 @@ ReactDOM.render(
 );
 ```
 
-* En App.js definir las rutas:
+* En App.js definir las rutas
 ```js
 import {Switch, Route} from 'react-router-dom';
 
