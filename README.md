@@ -72,6 +72,12 @@
     - [Página 404](#p%C3%A1gina-404)
     - [Publicando con Surge](#publicando-con-surge)
 - [Redux, gestionando el estado global de tu aplicación](#redux-gestionando-el-estado-global-de-tu-aplicaci%C3%B3n)
+    - [¿Qué es Redux?](#%C2%BFqu%C3%A9-es-redux)
+    - [Conceptos de Redux](#conceptos-de-redux)
+    - [Contador en Redux](#contador-en-redux)
+    - [Introducción a React Redux](#introducci%C3%B3n-a-react-redux)
+    - [API de React Redux](#api-de-react-redux)
+    - [Ejercicio práctico de React Redux](#ejercicio-pr%C3%A1ctico-de-react-redux)
 - [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
 
 <!-- /TOC -->
@@ -2065,7 +2071,160 @@ export default class ButtonBackToHome extends Component {
 ```
 
 ### Publicando con Surge
+https://surge.sh/
 
 ## Redux, gestionando el estado global de tu aplicación
+### ¿Qué es Redux?
+* Redux es un contenedor predecible del estado global de una aplicación en javascript.
+* Basada en la arquitectura Flux de Facebook, pero más sencilla. 
+* Redux es una libreria externa.
+* Conceptos básicos:
+  * El estado de tu aplicación se describe como un simple objeto.
+  * El estado es global y se puede recuperar desde cualquier parte de la vista.
+  * El estado no se puede modificar, hay que crear uno nuevo a partir del anterior.
+* Los 3 principios de Redux.
+  1. Única fuente de verdad: todo el estado de tu aplicación esta contenido en un único store.
+  2. El estado es de solo lectura (inmutable): la única forma de modificar el estado es emitir una __action__ que indique qué cambió. 
+  3. Lo cambios se realizan con funciones puras: para controlar como el store es modificado por las acciones se usan __reducers__ puros.
+* Diagrama
+![redux_diagram](docs/redux_01.png) 
+
+### Conceptos de Redux
+* __Actions__: objetos planos de javascript, tienen una propiedad "type" que inica el tipo de acción. Pueden contener otras propiedades que sirven como "payload" para poder realizar la acción.
+```js
+{
+  type: 'ADD_TODO',
+  text: 'Aprender Redux'
+}
+```
+
+* __Actions Creators__: funciones puras que devuelven Actions. Son útiles para evitar inconsitencias en el código y tener que escribir los objetos a mano.
+```js
+function addTodo(text) {
+  return {
+    type: 'ADD_TODO',
+    payload: {text}
+  }
+}
+``` 
+
+* __Reducers__ funcion pura que recibe el estado anterior y la acción y, a partir de ellas, crea un nuevo estado de la aplicación.
+```js
+function todoApp(state = initialState, action) {
+  switch (action.type)
+    case ADD_TODO:
+      return Object.assing({}, state, {
+        todos: [ 
+          ...state.todos,
+          {
+            text: action.text,
+            completed: false
+          }
+        ]
+      })
+    default:
+      return state
+}
+```
+
+* __Store__ almacena el estado global de la aplicación. Permite que el estado sea leído, que ten puedas suscribir a sus cambios y, lo más importante, que envíes acciones para crear un nuevo estado.
+```js
+//cargamos la función para crear un store
+import {createStore} from 'redux'
+// cargamos nuestros reducers
+import reducers from './reducers'
+// creamos el store
+const store = createStore(reducers)
+```
+
+* Obteniendo el state actual de la store
+```js
+import store from './store.js'
+console.log(store.getState())
+```
+
+* Suscribiéndote a los cambios del store
+```js
+import store from './store.js'
+// al suscribirte a la store, te devuelve una función para ejecutarla y desuscribirte más tarde.
+const unsubscribe = store.subscribe (() => {
+  //esta funcion se ejecuta cuando haya una acutalizacion del state
+  console.log(store.getState())
+  //podríamos aquí actualizar nuestra aplicación con la nueva info
+  const {usuario} = store.getState()
+  document.getElementById('usuario').innerHTML = usuario
+})
+//podríamos usar el metodo unsubscribe mas tarde para elminiar la suscripción a la store
+document.getElementById('cerrar').addEventListener('click', () => unsubscribe())
+```
+
+* Enviando actions para actualizar la store
+Projecto: https://stackblitz.com/edit/js-us1wzf
+Ejemplo
+![redux_ejemplo](docs/redux_02.png) 
+
+```js
+import store from './store.js';
+//esto envia una accion a la store y actualizara el estado usando el reducer que hayas programado
+store.dispatch({
+  type: 'ADD_TODO',
+  text: 'Aprender React con @midudev'
+})
+```
+### Contador en Redux
+* index.html
+```html
+  <div> Contador: <span id='contador'>0</div>
+  <button id='incrementar'>+</button>
+  <button id='decrementar'>-</button>
+```
+
+* index.js
+```js
+import {createStore} from 'redux'
+
+const contador = document.getElementById('contador')
+const decrementar = document.getElementById('decrementar')
+const incrementar = document.getElementById('incrementar')
+
+const INITIAL_STATE = { counter: 0 }
+
+//reducer
+function counterApp (state= INITIAL_STATE, action) {
+  switch (action.type) {
+    case 'INCREMENT':
+      return { counter: state.counter + 1 }
+    case 'DECREMENT':
+      return { counter: state.counter - 1 }
+    default: 
+      return state;
+  }
+}
+
+const store = createStore(counterApp)
+store.subscribe(() => {
+  const state = store.getState()
+  contador.innerText = state.counter
+
+})
+
+
+incrementar.addEventListener('click', () => {
+  store.dispatch({ type: 'INCREMENT' })
+})
+
+decrementar.addEventListener('click', () => {
+  store.dispatch({ type: 'DECREMENT' })
+})
+```
+
+### Introducción a React Redux
+* Componentes presenciacionales
+* Componentes contenedores
+
+
+### API de React Redux
+
+### Ejercicio práctico de React Redux
 
 ## Proyectos de los estudiantes
