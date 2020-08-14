@@ -84,6 +84,7 @@
 
 ## Introducción del curso
 https://www.udemy.com/course/aprendiendo-react/
+Creado por: [Miguel Duran](https://www.udemy.com/user/miguelngeldurngarca/)
 
 ## Configuracion del entorno
 * Install
@@ -2218,13 +2219,21 @@ decrementar.addEventListener('click', () => {
 })
 ```
 
-### Introducción a React Redux
-* Componentes presenciacionales
-* Componentes contenedores
-
 
 ### API de React Redux
+* Componentes presentacionales: como ser ven los componentes
+* Componentes contenedores: lógica de los componentes
+
+* react-redux: libreria que facilita la conexión de React con Redux gracias a algunas utilidades que ofrece.
+```shell
+npm install --save react-redux
+```
+* Beneficios:
+  * Evitar la gestion manual de tener que pasar la store a todos nuestro componentes
+  * Leer el estado global desde cualquier logar de nuestro árbol de elementos
+  * Llamar a acciones desde cualquier componente
 
 ### Ejercicio práctico de React Redux
+
 
 ## Proyectos de los estudiantes
