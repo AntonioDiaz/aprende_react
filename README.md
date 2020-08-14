@@ -75,7 +75,6 @@
     - [¿Qué es Redux?](#%C2%BFqu%C3%A9-es-redux)
     - [Conceptos de Redux](#conceptos-de-redux)
     - [Contador en Redux](#contador-en-redux)
-    - [Introducción a React Redux](#introducci%C3%B3n-a-react-redux)
     - [API de React Redux](#api-de-react-redux)
     - [Ejercicio práctico de React Redux](#ejercicio-pr%C3%A1ctico-de-react-redux)
 - [Proyectos de los estudiantes](#proyectos-de-los-estudiantes)
